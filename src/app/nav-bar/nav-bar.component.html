@@ -1,0 +1,81 @@
+<nav class="navbar navbar-inverse navbar-static-top" style="background-color: #1a2c51">
+  <div class="container-fluid" (window:resize)="onResize($event)">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              (click)="isCollapsed = !isCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">SlackOverflow</a>
+    </div>
+
+    <div id="navbar" class="navbar-collapse collapse" [collapse]="isCollapsed" [ngSwitch]="isCollapsed">
+      <ul class="nav navbar-nav" *ngSwitchCase="true">
+        <li><a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></a></li>
+      </ul>
+      <form class="navbar-form navbar-right" *ngSwitchCase="true">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search">
+          <div class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </div>
+        </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right" *ngSwitchCase="true">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Log in</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Sign up</a></li>
+        <li ngbDropdown class="dropdown">
+          <a ngbDropdownToggle href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+             aria-haspopup="false" aria-expanded="false">Help <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav" *ngSwitchCase="false" style="text-align: center">
+        <li><a href="#">
+          <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+          &nbsp;Inbox
+        </a></li>
+        <li><a href="#">
+          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+          &nbsp;Achievements
+        </a></li>
+        <li><a href="#">
+          <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+          &nbsp;Log in
+        </a></li>
+        <li><a href="#">
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+          &nbsp;Sign up
+        </a></li>
+        <li ngbDropdown class="dropdown">
+          <a ngbDropdownToggle href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+             aria-haspopup="false" aria-expanded="false">Help <span class="caret"></span></a>
+          <ul class="dropdown-menu" style="text-align: center">
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </li>
+        <li>
+          <form>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search">
+              <div class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                  <span class="glyphicon glyphicon-search"></span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
