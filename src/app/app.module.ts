@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
+import { QuestionComponent } from './question/question.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
     HomeComponent,
     SignUpComponent,
     LogInComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,
