@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">SlackOverflow</a>
+      <a class="navbar-brand" routerLink="/" routerLinkActive="active">SlackOverflow</a>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse" [collapse]="isCollapsed" [ngSwitch]="isCollapsed">
@@ -27,8 +27,8 @@
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right" *ngSwitchCase="true">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Log in</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Sign up</a></li>
+        <li><a routerLink="/login" routerLinkActive="active"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Log in</a></li>
+        <li><a routerLink="/signup" routerLinkActive="active"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Sign up</a></li>
         <li ngbDropdown class="dropdown">
           <a ngbDropdownToggle href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
              aria-haspopup="false" aria-expanded="false">Help <span class="caret"></span></a>
