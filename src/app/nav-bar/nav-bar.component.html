@@ -30,11 +30,11 @@
         <li><a routerLink="/login" routerLinkActive="active"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Log in</a></li>
         <li><a routerLink="/signup" routerLinkActive="active"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Sign up</a></li>
         <li ngbDropdown class="dropdown">
-          <a ngbDropdownToggle href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+          <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown" role="button"
              aria-haspopup="false" aria-expanded="false">Help <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">About</a></li>
+            <li><a routerLink="/faq">FAQ</a></li>
+            <li><a routerLink="/about">About</a></li>
           </ul>
         </li>
       </ul>
@@ -47,20 +47,20 @@
           <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
           &nbsp;Achievements
         </a></li>
-        <li><a href="#">
+        <li><a routerLink="/login">
           <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
           &nbsp;Log in
         </a></li>
-        <li><a href="#">
+        <li><a routerLink="/signup">
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
           &nbsp;Sign up
         </a></li>
         <li ngbDropdown class="dropdown">
-          <a ngbDropdownToggle href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+          <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown" role="button"
              aria-haspopup="false" aria-expanded="false">Help <span class="caret"></span></a>
           <ul class="dropdown-menu" style="text-align: center">
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">About</a></li>
+            <li><a routerLink="/faq">FAQ</a></li>
+            <li><a routerLink="/about">About</a></li>
           </ul>
         </li>
         <li>

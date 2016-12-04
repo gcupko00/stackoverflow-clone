@@ -16,6 +16,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
 import { QuestionComponent } from './question/question.component';
+import { AboutComponent } from './about/about.component';
+import { FaqComponent } from './faq/faq.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,6 +25,8 @@ const appRoutes: Routes = [
   { path: 'user', component: UserComponent },
   { path: 'login', component: LogInComponent },
   { path: 'signup', component: SignUpComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'faq', component: FaqComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -38,7 +42,9 @@ const appRoutes: Routes = [
     SignUpComponent,
     LogInComponent,
     PageNotFoundComponent,
-    QuestionComponent
+    QuestionComponent,
+    AboutComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,

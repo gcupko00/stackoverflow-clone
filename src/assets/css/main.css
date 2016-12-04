@@ -20,3 +20,19 @@
   display: block;
   font-size: smaller;
 }
+
+.input-label:first-of-type {
+  margin-top: 8px;
+  margin-left: 8px;
+}
+
+.input-label:not(:first-of-type) {
+  margin-top: 15px;
+  margin-left: 8px;
+}
+
+.confirm-button {
+  margin-left: 10rem;
+  margin-top: 2rem;
+  width: 74px;
+}
