@@ -18,6 +18,7 @@ import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
 import { QuestionComponent } from './question/question.component';
 import { AboutComponent } from './about/about.component';
 import { FaqComponent } from './faq/faq.component';
+import { QuestionFormComponent } from './question-form/question-form.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
   { path: 'signup', component: SignUpComponent },
   { path: 'about', component: AboutComponent },
   { path: 'faq', component: FaqComponent },
+  { path: 'ask-question', component: QuestionFormComponent},
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -44,7 +46,8 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     QuestionComponent,
     AboutComponent,
-    FaqComponent
+    FaqComponent,
+    QuestionFormComponent
   ],
   imports: [
     BrowserModule,

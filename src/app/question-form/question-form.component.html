@@ -1,0 +1,29 @@
+<menu-panel></menu-panel>
+<div class="col-md-10 col-sm-9 col-xs-12">
+  <form role = "form">
+    <h3>Your question</h3>
+    <div class="input-group">
+      <span class="input-group-addon">Title:</span>
+      <input type="text" class="form-control" placeholder="Short summary of your question">
+    </div>
+    <label>Question text:</label>
+    <div class = "form-group">
+      <textarea title="Question text" class = "form-control" rows = "3"></textarea>
+    </div>
+    <div class="tag-container">
+      <a href="javascript:void(0)" *ngFor="let tag of tags" (dblclick)="deleteTag(tag)">
+        <span class="label label-info">{{tag}}</span>
+      </a>
+    </div>
+    <div class="input-group col-md-8">
+      <span class="input-group-addon">Add tags:</span>
+      <input type="text" class="form-control" placeholder="tag" #inputTag (keyup.enter)="addTag(inputTag)">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" (click)="addTag(inputTag)">Add</button>
+      </span>
+    </div>
+    <button type="button" class="btn btn-default">Discard</button>
+    <button type="submit" class="btn btn-primary">Submit Question</button>
+  </form>
+
+</div>
