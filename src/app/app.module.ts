@@ -19,6 +19,8 @@ import { QuestionComponent } from './question/question.component';
 import { AboutComponent } from './about/about.component';
 import { FaqComponent } from './faq/faq.component';
 import { QuestionFormComponent } from './question-form/question-form.component';
+import { TagsComponent } from './tags/tags.component';
+import { MaxLengthPipe } from './max-length.pipe';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,6 +31,7 @@ const appRoutes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'ask-question', component: QuestionFormComponent},
+  { path: 'tags', component: TagsComponent},
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -47,7 +50,9 @@ const appRoutes: Routes = [
     QuestionComponent,
     AboutComponent,
     FaqComponent,
-    QuestionFormComponent
+    QuestionFormComponent,
+    TagsComponent,
+    MaxLengthPipe
   ],
   imports: [
     BrowserModule,

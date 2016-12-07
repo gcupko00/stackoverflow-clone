@@ -1,0 +1,34 @@
+.main-tags-container {
+  margin-top: 1em;
+}
+
+@media only screen and (max-width:767px) {
+  .main-tags-container > a {
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .main-tags-container > a {
+    margin-right: 1em;
+    margin-bottom: 1em;
+    border-radius: 2%;
+  }
+}
+.main-tags-container > a {
+  display: inline;
+  padding-top: 0.5em;
+  border: 1px solid lightblue;
+  height: 110px;
+}
+
+.main-tags-container > a > p {
+  margin-top: 0.5em;
+  font-size: smaller;
+  text-align: justify;
+}
+
+a {
+  text-decoration: none;
+}
