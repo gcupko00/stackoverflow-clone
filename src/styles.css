@@ -1,3 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "assets/css/main.css";
+
+html, body, #container {
+  height: 100%;
+}
+
+body > #container { height: auto; min-height: 100%; } {
+  height: auto;
+  min-height: 100%;
+}
+
+.input-form {
+  width: 250px;
+}

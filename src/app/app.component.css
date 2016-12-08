@@ -1,0 +1,15 @@
+#content {
+  padding-bottom: 3em;
+}
+
+#footer {
+  clear: both;
+  position: relative;
+  z-index: 10;
+  height: 3em;
+  line-height: 3em;
+  text-align: center;
+  margin-top: -3em;
+  margin-bottom: -2em;
+  color: #aaa;
+}

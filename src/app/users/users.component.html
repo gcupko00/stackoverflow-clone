@@ -1,0 +1,17 @@
+<div id="container col-md-10 col-sm-9 col-xs-12">
+  <div class="row subheader">
+    <h1 id="h-users">Users</h1>
+    <div id="tabs">
+      <a class="sort-option bg-info" title="Sort by reputation">reputation</a>
+      <a class="sort-option bg-info" title="Sort by age">new users</a>
+      <a class="sort-option bg-info" title="Sort by voters">voters</a>
+    </div>
+  </div>
+  <div class="img-thumbnail container col-md-2 col-sm-3 col-xs-6" *ngFor="let user of users">
+    <a href="javascript:void(0)">
+      <img class="img-thumbnail center-block img-responsive" alt="user-image" src="../../assets/slacker-meme.jpg"/>
+      <span class="label label-info">{{user.userName}}</span>
+      <span>{{user.userReputation}}</span>
+    </a>
+  </div>
+</div>

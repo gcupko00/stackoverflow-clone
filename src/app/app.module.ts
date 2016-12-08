@@ -21,11 +21,13 @@ import { FaqComponent } from './faq/faq.component';
 import { QuestionFormComponent } from './question-form/question-form.component';
 import { TagsComponent } from './tags/tags.component';
 import { MaxLengthPipe } from './max-length.pipe';
+import { UsersComponent } from './users/users.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'user', component: UserComponent },
+  { path: 'users', component: UsersComponent },
   { path: 'login', component: LogInComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'about', component: AboutComponent },
@@ -52,7 +54,8 @@ const appRoutes: Routes = [
     FaqComponent,
     QuestionFormComponent,
     TagsComponent,
-    MaxLengthPipe
+    MaxLengthPipe,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

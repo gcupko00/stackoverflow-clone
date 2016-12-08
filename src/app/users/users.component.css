@@ -1,0 +1,20 @@
+#h-users {
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: normal;
+  color: #242729;
+  font-size: 18px;
+  line-height: 2.22;
+}
+
+#tabs {
+  float: right;
+  line-height: 3.22;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.sort-option {
+  margin-right: 18px;
+}
