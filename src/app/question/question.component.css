@@ -9,11 +9,11 @@
 }
 
 .rating-stat {
-  border-radius: 20px 0 0 20px;
+  border-radius: 2% 0 0 2%;
 }
 
 .views-stat {
-  border-radius: 0 20px 20px 0;
+  border-radius: 0 2% 2% 0;
 }
 
 .badge-label {
@@ -32,5 +32,18 @@
 }
 
 .tag-container {
+  margin: 0 0 0.5em 0;
+}
+
+.stat {
+  border: 1px solid darkgray;
+}
+
+#date-container {
+  padding-right: 0;
+}
+
+#date-container > span {
   float: right;
+  font-size: x-small;
 }

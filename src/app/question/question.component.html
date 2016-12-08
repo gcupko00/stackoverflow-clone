@@ -1,31 +1,29 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-6 col-md-3 col-lg-4 row stats-container">
-      <div class="col-xs-4 rating-stat" style="background-color: skyblue">
-        <span class="badge">7</span>
+      <div class="col-xs-4 rating-stat stat">
+        <span class="badge">{{rating}}</span>
         <label class="badge-label">rating</label>
       </div>
-      <div class="col-xs-4 answers-stat" style="background-color: palegreen">
-        <span class="badge">3</span>
+      <div class="col-xs-4 answers-stat stat">
+        <span class="badge">{{answers}}</span>
         <label class="badge-label">answers</label>
       </div>
-      <div class="col-xs-4 views-stat" style="background-color: navajowhite">
-        <span class="badge">46</span>
+      <div class="col-xs-4 views-stat stat">
+        <span class="badge">{{views}}</span>
         <label class="badge-label">views</label>
       </div>
-      <div class="tag-container">
-        <a href="javascript:void(0)">
-          <span class="label label-info">Tag1</span>
-          <span class="label label-info">Tag2</span>
-          <span class="label label-info">Tag3</span>
-          <span class="label label-info">Tag4</span>
+      <div class="tag-container col-xs-12">
+        <a href="javascript:void(0)" *ngFor="let tag of tags">
+          <span class="label label-info">{{tag}}</span>
         </a>
+      </div>
+      <div class="col-sm-12 hidden-xs" id="date-container">
+        <span>Submitted: {{date | date:'short'}}</span>
       </div>
     </div>
     <div class="col-sm-6 col-md-9 col-lg-8" style="font-size: larger">
-      Lorem ipsum dolor sit amet, interdum nulla, nec quam, feugiat nisl.
-      Ac lacinia, a in. Penatibus sit suscipit, vel nam. Et praesent parturient, pharetra nunc mauris. Id arcu.
+      {{description}}
     </div>
-    <!--TODO: show question tags and ask time - maybe under the stats (there is unused space anyway)-->
   </div>
 </div>
