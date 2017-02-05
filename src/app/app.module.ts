@@ -4,7 +4,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
-import { CollapseDirective } from 'ng2-bootstrap';
+import { Ng2BootstrapModule } from 'ng2-bootstrap';
 
 import { AppComponent } from './app.component';
 import { QuestionsComponent } from './questions/questions.component';
@@ -26,6 +26,7 @@ import { UsersComponent } from './users/users.component';
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'questions', component: QuestionsComponent },
   { path: 'user', component: UserComponent },
   { path: 'users', component: UsersComponent },
   { path: 'login', component: LogInComponent },
@@ -39,7 +40,6 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    CollapseDirective,
     AppComponent,
     QuestionsComponent,
     MenuPanelComponent,
@@ -61,6 +61,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    Ng2BootstrapModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],

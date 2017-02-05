@@ -11,7 +11,7 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
   public isCollapsed: boolean = true;
 
   public onResize(event) {

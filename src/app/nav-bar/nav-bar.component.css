@@ -1,3 +1,10 @@
 #search {
   margin: 0 1em 0 1em;
 }
+
+#navbar {
+  display: block;
+  overflow: hidden;
+  -webkit-transition: height .5s;
+  transition: height .5s;
+}
