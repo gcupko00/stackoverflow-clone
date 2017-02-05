@@ -1,10 +1,10 @@
-<div id="container col-md-10 col-sm-9 col-xs-12">
+<div class="container col-md-10 col-sm-9 col-xs-12">
   <div class="row subheader">
     <h1 id="h-users">Users</h1>
-    <div id="tabs">
-      <a class="sort-option bg-info" title="Sort by reputation">reputation</a>
-      <a class="sort-option bg-info" title="Sort by age">new users</a>
-      <a class="sort-option bg-info" title="Sort by voters">voters</a>
+    <div id="tabs" class="btn-group" role="users-sort" aria-label="...">
+      <button type="button" class="btn btn-default" title="Sort by reputation">reputation</button>
+      <button type="button" class="btn btn-default" title="Sort by age">new users</button>
+      <button type="button" class="btn btn-default" title="Sort by voters">voters</button>
     </div>
   </div>
   <div class="img-thumbnail container col-md-2 col-sm-3 col-xs-6" *ngFor="let user of users">
