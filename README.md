@@ -11,6 +11,8 @@ Website similar to [Stack Overflow](http://stackoverflow.com/) created as a coll
 
 * [Angular CLI](https://github.com/angular/angular-cli) ([webpack](https://github.com/webpack/webpack))
 
+### [Back end](https://github.com/sklavko/stackoverflow-clone-backend)
+
 ## Made by
 <a href="https://github.com/sklavko">sklavko</a></br>
 <a href="https://github.com/bolkonksy/">bolkonksy</a>
