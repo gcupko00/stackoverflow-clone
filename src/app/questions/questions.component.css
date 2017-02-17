@@ -1,0 +1,39 @@
+.stats-container {
+  max-width: 300px;
+  margin: auto;
+}
+
+.stats-container > div {
+  text-align: center;
+  padding-top: 2%;
+}
+
+.rating-stat {
+  border-radius: 2% 0 0 2%;
+}
+
+.views-stat {
+  border-radius: 0 2% 2% 0;
+}
+
+.badge-label {
+  display: block;
+  font-size: smaller;
+}
+
+.tag-container {
+  margin: 0 0 0.5em 0;
+}
+
+.stat {
+  border: 1px solid darkgray;
+}
+
+#date-container {
+  padding-right: 0;
+}
+
+#date-container > span {
+  float: right;
+  font-size: x-small;
+}

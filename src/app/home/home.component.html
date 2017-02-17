@@ -3,11 +3,33 @@
     <div class="page-header">
       <h3>Top questions</h3>
     </div>
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="list-group-item">
-      <question></question>
-    </a>
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="list-group-item">
-      <question></question>
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="list-group-item" *ngFor="let question of questions">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-6 col-md-3 col-lg-4 row stats-container">
+            <div class="col-xs-4 rating-stat stat">
+              <span class="badge">{{question.rating}}</span>
+              <label class="badge-label">rating</label>
+            </div>
+            <div class="col-xs-4 answers-stat stat">
+              <span class="badge">{{question.answers}}</span>
+              <label class="badge-label">answers</label>
+            </div>
+            <div class="col-xs-4 views-stat stat">
+              <span class="badge">{{question.views}}</span>
+              <label class="badge-label">views</label>
+            </div>
+            <div class="tag-container col-xs-12">
+              <a href="javascript:void(0)" *ngFor="let tag of question.tags">
+                <span class="label label-info">{{tag}}</span>
+              </a>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-9 col-lg-8" style="font-size: larger">
+            {{question.description}}
+          </div>
+        </div>
+      </div>
     </a>
   </div>
   <div class="row">
