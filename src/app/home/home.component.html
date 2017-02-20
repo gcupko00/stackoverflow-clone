@@ -6,7 +6,7 @@
     <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="list-group-item" *ngFor="let question of questions">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-sm-6 col-md-3 col-lg-4 row stats-container">
+          <div class="col-sm-6 col-md-4 col-lg-4 row stats-container">
             <div class="col-xs-4 rating-stat stat">
               <span class="badge">{{question.rating}}</span>
               <label class="badge-label">rating</label>
@@ -25,8 +25,9 @@
               </a>
             </div>
           </div>
-          <div class="col-sm-6 col-md-9 col-lg-8" style="font-size: larger">
-            {{question.description}}
+          <div class="col-sm-6 col-md-9 col-lg-8" >
+            <div style="font-size: larger">{{question.title}}</div>
+            <div style="font-size: smaller">{{question.description | maxLength: 200}}</div>
           </div>
         </div>
       </div>

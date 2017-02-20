@@ -37,3 +37,8 @@
   float: right;
   font-size: x-small;
 }
+
+.pagination {
+  display: table;
+  margin: 1em auto;
+}

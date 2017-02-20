@@ -1,5 +1,6 @@
 .main-tags-container {
   margin-top: 1em;
+  margin-bottom: 3em;
 }
 
 @media only screen and (max-width:767px) {
@@ -21,6 +22,7 @@
   padding-top: 0.5em;
   border: 1px solid lightblue;
   height: 110px;
+  min-width: 150px;
 }
 
 .main-tags-container > a > p {

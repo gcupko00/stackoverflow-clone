@@ -6,3 +6,20 @@ button {
 .input-group {
   margin-bottom: 1em;
 }
+
+.tag-container {
+  min-height: 2em;
+}
+
+.buttons {
+  float: right;
+}
+
+.glyphicon-alert {
+  color: #ff6846;
+}
+
+#description-warning {
+  float: right;
+  margin-right: 5px;
+}

@@ -21,10 +21,34 @@
             </a>
           </div>
         </div>
-        <div class="col-sm-6 col-md-9 col-lg-8" style="font-size: larger">
-          {{question.description}}
+        <div class="col-sm-6 col-md-9 col-lg-8" >
+          <div style="font-size: larger">{{question.title}}</div>
+          <div style="font-size: smaller">{{question.description | maxLength: 200}}</div>
         </div>
       </div>
     </div>
   </a>
+
+  <nav>
+    <ul class="pagination" role="group">
+      <li><a href="javascript:void(0)" (click)="setPage(currentPage-1)"><span>&laquo;</span></a></li>
+      <ng-container *ngFor="let page of pages">
+        <li [ngClass]="{active : page == currentPage}" (click)="setPage(page)"
+            *ngIf="page == 1">
+          <a href="javascript:void(0)">{{page}}</a>
+        </li>
+        <li *ngIf="page == currentPage-3 && currentPage-3 > 1"><a href="javascript:void(0)">...</a></li>
+        <li [ngClass]="{active : page == currentPage}" (click)="setPage(page)"
+            *ngIf="(page >= currentPage-2) && (page <= currentPage+2) && (page != 1) && (page != pages.length)">
+          <a href="javascript:void(0)">{{page}}</a>
+        </li>
+        <li *ngIf="page == currentPage+3 && currentPage+3 < pages.length"><a href="javascript:void(0)">...</a></li>
+        <li [ngClass]="{active : page == currentPage}" (click)="setPage(page)"
+            *ngIf="page == pages.length">
+          <a href="javascript:void(0)">{{page}}</a>
+        </li>
+      </ng-container>
+      <li><a href="javascript:void(0)" (click)="setPage(currentPage+1)"><span>&raquo;</span></a></li>
+    </ul>
+  </nav>
 </div>

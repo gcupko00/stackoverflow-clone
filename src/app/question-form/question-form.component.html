@@ -3,26 +3,39 @@
     <h3>Your question</h3>
     <div class="input-group">
       <span class="input-group-addon">Title:</span>
-      <input type="text" class="form-control" placeholder="Short summary of your question">
+      <input type="text" class="form-control" placeholder="Short summary of your question" #inputTitle (focus)="removeTitleWarn()">
+      <span class="input-group-addon" *ngIf="titleWarn" tooltip="Title is too short!" placement="top">
+        <i class="glyphicon glyphicon-alert"></i>
+      </span>
     </div>
-    <label>Question text:</label>
+    <div>
+      <label>Question text:</label>
+      <span id="description-warning" *ngIf="descriptionWarn" tooltip="Description is too short!" placement="left">
+        <i class="glyphicon glyphicon-alert"></i>
+      </span>
+    </div>
     <div class = "form-group">
-      <textarea title="Question text" class = "form-control" rows = "3"></textarea>
+      <textarea title="Question text" class = "form-control" rows = "3" #inputDescription (focus)="removeDescriptionWarn()"></textarea>
+    </div>
+
+    <div class="input-group col-md-8">
+      <span class="input-group-addon">Add tags:</span>
+      <input type="text" class="form-control" placeholder="tag" #inputTag (keyup.enter)="addTag(inputTag)" (focus)="removeTagsWarn()">
+      <span class="input-group-addon" *ngIf="tagsWarn" tooltip="Add some tags!" placement="bottom">
+        <i class="glyphicon glyphicon-alert"></i>
+      </span>
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" (click)="addTag(inputTag)">Add</button>
+      </span>
     </div>
     <div class="tag-container">
       <a href="javascript:void(0)" *ngFor="let tag of tags" (dblclick)="deleteTag(tag)">
         <span class="label label-info">{{tag}}</span>
       </a>
     </div>
-    <div class="input-group col-md-8">
-      <span class="input-group-addon">Add tags:</span>
-      <input type="text" class="form-control" placeholder="tag" #inputTag (keyup.enter)="addTag(inputTag)">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button" (click)="addTag(inputTag)">Add</button>
-      </span>
+    <div class="buttons">
+      <button type="button" class="btn btn-default">Discard</button>
+      <button type="submit" class="btn btn-primary" (click)="submitQuestion(inputTitle, inputDescription)">Submit Question</button>
     </div>
-    <button type="button" class="btn btn-default">Discard</button>
-    <button type="submit" class="btn btn-primary">Submit Question</button>
   </form>
-
 </div>

@@ -13,8 +13,8 @@ export class HomeComponent implements OnInit {
   constructor(private questionService: QuestionService) { }
 
   ngOnInit() {
-    this.questionService.getQuestion().subscribe(
-      question => this.questions.push(question, question),
+    this.questionService.getTopQuestions().subscribe(
+      questions => this.questions = questions,
       error => console.log(error)
     );
   }

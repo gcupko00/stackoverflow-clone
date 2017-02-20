@@ -4,7 +4,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule, JsonpModule } from '@angular/http';
-import { Ng2BootstrapModule } from 'ng2-bootstrap';
+import { Ng2BootstrapModule, TooltipModule } from 'ng2-bootstrap';
+import { DropdownModule } from 'ng2-bootstrap/dropdown';
 
 import { AppComponent } from './app.component';
 import { QuestionsComponent } from './questions/questions.component';
@@ -64,7 +65,9 @@ const appRoutes: Routes = [
     JsonpModule,
     Ng2BootstrapModule,
     NgbModule.forRoot(),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    DropdownModule.forRoot(),
+    TooltipModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
