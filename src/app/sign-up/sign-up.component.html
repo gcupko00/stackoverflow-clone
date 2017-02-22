@@ -2,22 +2,22 @@
 <div class="container col-md-7 col-sm-7 col-xs-12">
   <h3>Sign Up</h3>
 
-  <label class="input-label input-form" for="basic-url"> Username</label>
+  <label class="input-label input-form"> Username</label>
   <div class="input-group input-form">
-    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" placeholder="Johnny Stulic">
+    <input #inputUsername type="text" class="form-control" aria-describedby="basic-addon3" placeholder="Johnny Stulic">
   </div>
 
-  <label class="input-label input-form" for="basic-url"> Password</label>
+  <label class="input-label input-form"> Password</label>
   <div class="input-group input-form">
-    <input type="password" class="form-control" id="basic-url" aria-describedby="basic-addon3" placeholder="********">
+    <input #inputPassword type="password" class="form-control" aria-describedby="basic-addon3" placeholder="********">
   </div>
 
-  <label class="input-label input-form" for="basic-url"> Email</label>
+  <label class="input-label input-form"> Email</label>
   <div class="input-group input-form">
-    <input type="email" class="form-control" id="basic-url" aria-describedby="basic-addon3" placeholder="johnny@email.org">
+    <input #inputEmail type="email" class="form-control" aria-describedby="basic-addon3" placeholder="johnny@email.org">
   </div>
 
   <div class="input-group">
-      <button type="submit" class="btn btn-primary confirm-button">Sign up</button>
+      <button (click)="signup(inputUsername, inputPassword, inputEmail)" type="submit" class="btn btn-primary confirm-button">Sign up</button>
   </div>
 </div>
