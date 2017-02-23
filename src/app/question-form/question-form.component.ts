@@ -36,33 +36,30 @@ export class QuestionFormComponent {
   }
 
   private submitQuestion(inputTitle: HTMLInputElement, inputDescription: HTMLInputElement) {
-    let formValid = true;
     this.title = inputTitle.value;
     this.description = inputDescription.value;
 
     if (this.title.length < 16) {
-      formValid = false;
       this.titleWarn = true;
+      return;
     }
 
     if (this.description.length < 64) {
-      formValid = false;
       this.descriptionWarn = true;
+      return;
     }
 
     if (this.tags.length == 0) {
-      formValid = false;
       this.tagsWarn = true;
+      return;
     }
 
-    if (formValid) {
-      let question = new Question(null, this.title, this.description, this.tags, 0, 0, 0);
+    let question = new Question(null, this.title, this.description, this.tags, 0, 0, 0, null);
 
-      this.questionService.addQuestion(question).subscribe(
-        question => console.log(question),
-        error => console.log(error)
-      );
-    }
+    this.questionService.addQuestion(question).subscribe(
+      question => console.log(question),
+      error => console.log(error)
+    );
   }
 
   private removeTitleWarn() {

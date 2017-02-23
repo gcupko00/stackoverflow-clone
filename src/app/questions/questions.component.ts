@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionService, Question } from '../question.service';
 import * as _ from 'lodash';
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'questions',
@@ -9,16 +10,25 @@ import * as _ from 'lodash';
   styleUrls: ['./questions.component.css']
 })
 export class QuestionsComponent implements OnInit {
-  questions: Question[] = [];
-  totalQuestionsCount: number;
-  pages: number[] = [1];
-  currentPage: number = 1;
+  private selectedId: number;
 
-  constructor(private questionService: QuestionService) {
-  }
+  private questions: Question[] = [];
+  private totalQuestionsCount: number;
+  private pages: number[] = [1];
+  private currentPage: number = 1;
+
+  constructor(
+    private questionService: QuestionService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     this.getQuestions();
+
+    this.route.params.subscribe(params => {
+      this.selectedId = +params['id'];
+    });
   }
 
   private setPage(page: number) {
@@ -37,6 +47,8 @@ export class QuestionsComponent implements OnInit {
       error => console.log(error)
     );
 
+    // install lodash using command
+    // > npm install @types/lodash@ts2.0
     this.questionService.getQuestionsCount().subscribe(
       count => {
         this.totalQuestionsCount = count;
@@ -44,5 +56,9 @@ export class QuestionsComponent implements OnInit {
       },
       error => console.log(error)
     );
+  }
+
+  private onSelect(question: Question) {
+    this.router.navigate(['/hero', question._id]);
   }
 }

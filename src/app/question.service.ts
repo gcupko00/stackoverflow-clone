@@ -8,15 +8,15 @@ import {forEach} from "@angular/router/src/utils/collection";
 
 @Injectable()
 export class QuestionService {
-  private questionUrl = 'http://localhost:3000/question/58a9844731100a0f38606688';
+  private questionUrl = 'http://localhost:3000/question/';
   private questionsUrl = 'http://localhost:3000/questions/';
   private topQuestionsUrl= 'http://localhost:3000/top-questions';
   private postQuestionUrl = 'http://localhost:3000/post-question';
 
   constructor(private http: Http) { }
 
-  getQuestion(): Observable<Question> {
-    return this.http.get(this.questionUrl)
+  getQuestion(_id: string): Observable<Question> {
+    return this.http.get(this.questionUrl + _id)
       .map(this.extractQuestionData)
       .catch(this.handleError);
   }
@@ -86,6 +86,7 @@ export class Question {
     public tags: string[],
     public rating: number,
     public answers: number,
-    public views: number
+    public views: number,
+    public answersText: string[]
   ) { }
 }

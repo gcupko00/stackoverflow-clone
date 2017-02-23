@@ -1,3 +1,55 @@
-<div>
+<div class="col-md-10 col-sm-9 col-xs-12">
+  <div class="question-container panel panel-default">
+    <div class="panel panel-heading">
+      <h3>{{question?.title}}</h3>
+    </div>
+    <div class="panel panel-body">
+      <div class="rating-container">
+        <a href="javascript:void(0)"><span class="glyphicon glyphicon-triangle-top" style="vertical-align: middle"></span></a>
+        <span>{{question?.rating}}</span>
+        <a href="javascript:void(0)"><span class="glyphicon glyphicon-triangle-bottom" style="vertical-align: baseline"></span></a>
+      </div>
+      <div class="text-container">
+      <span>{{question?.description}}</span>
+      </div>
+    </div>
+  </div>
 
+  <div class="answers-container panel panel-default">
+    <div class="panel panel-heading">
+      <h4>{{question?.answers}} answers</h4>
+    </div>
+    <div class="panel-body">
+      <div class="alert alert-info" role="alert">There are still no answers to this question. Please contribute if you can. (JK, answers are not yet implemented)</div>
+      <div class="answer-container panel panel-body" *ngFor="let answer of answers">
+        <div class="rating-container">
+          <a href="javascript:void(0)"><span class="glyphicon glyphicon-triangle-top" style="vertical-align: middle"></span></a>
+          <span>{{answer.rating}}</span>
+          <a href="javascript:void(0)"><span class="glyphicon glyphicon-triangle-bottom" style="vertical-align: baseline"></span></a>
+        </div>
+        <div class="text-container">
+        <span>{{answer.text}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="post-answer-container panel panel-default">
+      <div class="panel panel-heading">
+        <h4>Post your answer</h4>
+      </div>
+      <div class="panel panel-body">
+        <div>
+          <span id="answer-warning" *ngIf="answerWarn" tooltip="Answer is too short!" placement="left">
+            <i class="glyphicon glyphicon-alert"></i>
+          </span>
+        </div>
+        <div class="form-group">
+          <textarea title="Answer text" class="form-control" rows="3" #inputAnswer (focus)="removeAnswerWarn()"></textarea>
+        </div>
+        <div class="buttons">
+          <button type="button" class="btn btn-default">Discard</button>
+          <button type="submit" class="btn btn-primary" (click)="submitAnswer(inputAnswer)">Submit Answer</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

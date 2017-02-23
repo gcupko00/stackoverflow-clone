@@ -3,6 +3,10 @@ button {
   margin-left: 1em;
 }
 
+textarea {
+  resize: vertical;
+}
+
 .input-group {
   margin-bottom: 1em;
 }
