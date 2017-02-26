@@ -17,6 +17,7 @@ textarea {
 
 .buttons {
   float: right;
+  margin-bottom: 2em;
 }
 
 .glyphicon-alert {

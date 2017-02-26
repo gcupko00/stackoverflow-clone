@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {QuestionService, Question} from "../question.service";
 import {ActivatedRoute} from "@angular/router";
-import {Answer} from "../answer.service";
+import {Answer, AnswerService} from "../answer.service";
 
 @Component({
   selector: 'question',
   templateUrl: './question.component.html',
-  providers: [QuestionService],
+  providers: [QuestionService, AnswerService],
   styleUrls: ['./question.component.css']
 })
 
@@ -20,6 +20,7 @@ export class QuestionComponent implements OnInit {
 
   constructor(
     private questionService: QuestionService,
+    private answerService: AnswerService,
     private route: ActivatedRoute
   ) {
     this.id = route.snapshot.params['id'];
@@ -37,10 +38,13 @@ export class QuestionComponent implements OnInit {
   }
 
   private getAnswers() {
-    // get answers based on question id
+    this.answerService.getAnswers(this.id).subscribe(
+      answers => this.answers = answers,
+      error => console.log(error)
+    );
   }
 
-  private submitAnswer(inputAnswer: HTMLInputElement) {
+  private onSubmit(inputAnswer: HTMLInputElement) {
     this.newAnswerText = inputAnswer.value;
 
     if (this.newAnswerText.length < 16) {
@@ -48,9 +52,15 @@ export class QuestionComponent implements OnInit {
       return;
     }
 
-    let answer = new Answer(null, this.newAnswerText, 0);
+    let answer = new Answer(null, this.id, this.newAnswerText, 0);
 
     // post answer
+    this.answerService.addAnswer(answer).subscribe(
+      answer => {
+        console.log(answer);
+      },
+      error => console.log(error)
+    );
   }
 
   private removeAnswerWarn() {

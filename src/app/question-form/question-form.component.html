@@ -1,5 +1,5 @@
 <div class="col-md-10 col-sm-9 col-xs-12">
-  <form role = "form" (keydown.enter)="$event.preventDefault()">
+  <form role="form" (ngSubmit)="onSubmit(inputTitle, inputDescription)" (keydown.enter)="$event.preventDefault()">
     <h3>Your question</h3>
     <div class="input-group">
       <span class="input-group-addon">Title:</span>
@@ -14,8 +14,8 @@
         <i class="glyphicon glyphicon-alert"></i>
       </span>
     </div>
-    <div class = "form-group">
-      <textarea title="Question text" class = "form-control" rows = "3" #inputDescription (focus)="removeDescriptionWarn()"></textarea>
+    <div class="form-group">
+      <textarea title="Question text" class="form-control" rows="3" #inputDescription (focus)="removeDescriptionWarn()"></textarea>
     </div>
 
     <div class="input-group col-md-8">
@@ -29,13 +29,12 @@
       </span>
     </div>
     <div class="tag-container">
-      <a href="javascript:void(0)" tooltip="Double click to delete me." *ngFor="let tag of tags" (dblclick)="deleteTag(tag)">
+      <a href="javascript:void(0)" tooltip="Double click to delete me" *ngFor="let tag of tags" (dblclick)="deleteTag(tag)">
         <span class="label label-info">{{tag}}</span>
       </a>
     </div>
     <div class="buttons">
-      <button type="button" class="btn btn-default">Discard</button>
-      <button type="submit" class="btn btn-primary" (click)="submitQuestion(inputTitle, inputDescription)">Submit Question</button>
+      <button type="submit" class="btn btn-primary">Submit Question</button>
     </div>
   </form>
 </div>

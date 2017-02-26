@@ -28,6 +28,7 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'questions', component: QuestionsComponent },
+  { path: 'questions/:criteria', component: QuestionsComponent },
   { path: 'question/:id', component: QuestionComponent },
   { path: 'user', component: UserComponent },
   { path: 'users', component: UsersComponent },

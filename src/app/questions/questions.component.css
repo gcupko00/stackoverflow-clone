@@ -1,3 +1,7 @@
+.questions-container {
+  display: inline-block;
+}
+
 .stats-container {
   max-width: 300px;
   margin: auto;

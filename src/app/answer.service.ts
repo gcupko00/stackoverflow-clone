@@ -1,16 +1,26 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from "@angular/http";
+import {Http, Response, Headers, RequestOptions} from "@angular/http";
 import { Observable } from "rxjs";
 
 @Injectable()
 export class AnswerService {
-  private answersUrl: string;
+  private postAnswerUrl = 'http://localhost:3000/post-answer';
+  private getAnswersUrl = 'http://localhost:3000/answers/';
 
   constructor(private http: Http) { }
 
-  getAnswers(): Observable<Answer[]> {
-    return this.http.get(this.answersUrl)
+  getAnswers(_id: string): Observable<Answer[]> {
+    return this.http.get(this.getAnswersUrl + _id)
       .map(this.extractAnswersData)
+      .catch(this.handleError);
+  }
+
+  addAnswer(answer: Answer): Observable<Answer> {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(this.postAnswerUrl, JSON.stringify(answer), options)
+      .map(res => console.log(res))
       .catch(this.handleError);
   }
 
@@ -18,11 +28,11 @@ export class AnswerService {
     let body = res.json();
     let answers = [];
     for (let obj of body.data) {
+      obj.local._id = obj._id;
       answers.push(obj.local);
     }
     return answers || { };
   }
-
 
   private handleError(error: Response | any) {
     let errMsg: string;
@@ -41,7 +51,8 @@ export class AnswerService {
 export class Answer {
   constructor(
     public _id: string,
+    public _question: string,
     public text: string,
-    public rating: number,
+    public rating: number
   ) { }
 }

@@ -21,8 +21,8 @@ export class QuestionService {
       .catch(this.handleError);
   }
 
-  getQuestions(page: number): Observable<Question[]> {
-    return this.http.get(this.questionsUrl + page.toString())
+  getQuestions(criteria: string, page: number): Observable<Question[]> {
+    return this.http.get(this.questionsUrl + criteria + "/" + page.toString())
       .map(this.extractQuestionsData)
       .catch(this.handleError)
   }
@@ -42,14 +42,15 @@ export class QuestionService {
       .catch(this.handleError);
   }
 
-  getQuestionsCount() : Observable<number> {
-    return this.http.get("http://localhost:3000/question-count")
+  getQuestionsCount(criteria: string) : Observable<number> {
+    return this.http.get("http://localhost:3000/question-count/" + criteria)
       .map(count => count.json().totalQuestionsCount)
       .catch(this.handleError)
   }
 
   private extractQuestionData(res: Response) {
     let body = res.json();
+    console.log(body.data);
     body.data.local._id = body.data._id;
     return body.data.local || { };
   }
@@ -85,7 +86,7 @@ export class Question {
     public description: string,
     public tags: string[],
     public rating: number,
-    public answers: number,
+    public answersCount: number,
     public views: number,
     public answersText: string[]
   ) { }

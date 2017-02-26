@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import {Question, QuestionService} from "../question.service";
+import { Question, QuestionService } from "../question.service";
+import { Router } from "@angular/router";
+import {NgControl, FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'question-form',
@@ -9,6 +11,8 @@ import {Question, QuestionService} from "../question.service";
 })
 
 export class QuestionFormComponent {
+  private newQuestion: Question;
+
   private title: string = "";
   private description: string = "";
   private tags: string[] = [];
@@ -17,7 +21,11 @@ export class QuestionFormComponent {
   private descriptionWarn: boolean = false;
   private tagsWarn: boolean = false;
 
-  constructor(private questionService: QuestionService) {
+  submitted = false;
+
+  constructor(
+    private questionService: QuestionService,
+    private router: Router) {
   }
 
   private addTag(input: HTMLInputElement) {
@@ -35,7 +43,7 @@ export class QuestionFormComponent {
     this.tags.splice(this.tags.indexOf(tag), 1);
   }
 
-  private submitQuestion(inputTitle: HTMLInputElement, inputDescription: HTMLInputElement) {
+  private onSubmit(inputTitle: HTMLInputElement, inputDescription: HTMLInputElement) {
     this.title = inputTitle.value;
     this.description = inputDescription.value;
 
@@ -57,7 +65,10 @@ export class QuestionFormComponent {
     let question = new Question(null, this.title, this.description, this.tags, 0, 0, 0, null);
 
     this.questionService.addQuestion(question).subscribe(
-      question => console.log(question),
+      question => {
+        this.newQuestion = question;
+        this.router.navigateByUrl('question/' + question._id);
+      },
       error => console.log(error)
     );
   }

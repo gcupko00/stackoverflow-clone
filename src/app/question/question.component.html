@@ -17,7 +17,7 @@
 
   <div class="answers-container panel panel-default">
     <div class="panel panel-heading">
-      <h4>{{question?.answers}} answers</h4>
+      <h4>{{question?.answersCount}} answers</h4>
     </div>
     <div class="panel-body">
       <div class="alert alert-info" role="alert">There are still no answers to this question. Please contribute if you can. (JK, answers are not yet implemented)</div>
@@ -46,8 +46,7 @@
           <textarea title="Answer text" class="form-control" rows="3" #inputAnswer (focus)="removeAnswerWarn()"></textarea>
         </div>
         <div class="buttons">
-          <button type="button" class="btn btn-default">Discard</button>
-          <button type="submit" class="btn btn-primary" (click)="submitAnswer(inputAnswer)">Submit Answer</button>
+          <button type="submit" class="btn btn-primary" (click)="onSubmit(inputAnswer)">Submit Answer</button>
         </div>
       </div>
     </div>

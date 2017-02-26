@@ -1,4 +1,11 @@
 <div class="list-group col-md-10 col-sm-9 col-xs-12">
+  <ul class="nav nav-tabs pull-right">
+    <li role="presentation"><a href="/questions" routerLink="/questions/new">New</a></li>
+    <li role="presentation"><a href="/questions" routerLink="/questions/top">Top</a></li>
+    <li role="presentation"><a href="/questions" routerLink="/questions/unanswered">Unanswered</a></li>
+  </ul>
+
+  <div class="questions-container">
   <a href="javascript:void(0)" class="list-group-item" *ngFor="let question of questions">
     <div class="container-fluid" routerLink="/question/{{question._id}}">
       <div class="row">
@@ -8,7 +15,7 @@
             <label class="badge-label">rating</label>
           </div>
           <div class="col-xs-4 answers-stat stat">
-            <span class="badge">{{question.answers}}</span>
+            <span class="badge">{{question.answersCount}}</span>
             <label class="badge-label">answers</label>
           </div>
           <div class="col-xs-4 views-stat stat">
@@ -28,7 +35,7 @@
       </div>
     </div>
   </a>
-
+  </div>
   <nav>
     <ul class="pagination" role="group">
       <li><a href="javascript:void(0)" (click)="setPage(currentPage-1)"><span>&laquo;</span></a></li>

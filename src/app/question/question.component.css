@@ -9,6 +9,7 @@ textarea {
 
 .question-container {
   background-color: cornflowerblue;
+  margin-top: 2em;
 }
 
 .answers-container > .panel-heading {
