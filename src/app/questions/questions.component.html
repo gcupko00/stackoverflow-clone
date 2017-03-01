@@ -1,8 +1,8 @@
 <div class="list-group col-md-10 col-sm-9 col-xs-12">
   <ul class="nav nav-tabs pull-right">
-    <li role="presentation"><a href="/questions" routerLink="/questions/new">New</a></li>
-    <li role="presentation"><a href="/questions" routerLink="/questions/top">Top</a></li>
-    <li role="presentation"><a href="/questions" routerLink="/questions/unanswered">Unanswered</a></li>
+    <li role="presentation"><a href="/questions" routerLink="/questions/new/" (click)="this.currentPage = 1">New</a></li>
+    <li role="presentation"><a href="/questions" routerLink="/questions/top/" (click)="this.currentPage = 1">Top</a></li>
+    <li role="presentation"><a href="/questions" routerLink="/questions/unanswered/" (click)="this.currentPage = 1">Unanswered</a></li>
   </ul>
 
   <div class="questions-container">

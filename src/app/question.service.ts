@@ -5,6 +5,7 @@ import 'rxjs/add/observable/throw'
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import {forEach} from "@angular/router/src/utils/collection";
+import {Answer} from "./answer.service";
 
 @Injectable()
 export class QuestionService {
@@ -42,16 +43,24 @@ export class QuestionService {
       .catch(this.handleError);
   }
 
-  getQuestionsCount(criteria: string) : Observable<number> {
+  getQuestionsCount(criteria: string): Observable<number> {
     return this.http.get("http://localhost:3000/question-count/" + criteria)
       .map(count => count.json().totalQuestionsCount)
       .catch(this.handleError)
   }
 
+  rateQuestion(id: string, upDown: number): Observable<boolean> {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.put(this.questionUrl + id + "/rate", JSON.stringify({upDown: upDown}), { headers: headers })
+      .map(res => res.ok)
+      .catch(this.handleError);
+  }
+
   private extractQuestionData(res: Response) {
     let body = res.json();
-    console.log(body.data);
     body.data.local._id = body.data._id;
+    console.log(body.data.local);
     return body.data.local || { };
   }
 
@@ -88,6 +97,6 @@ export class Question {
     public rating: number,
     public answersCount: number,
     public views: number,
-    public answersText: string[]
+    public answers: Answer[]
   ) { }
 }

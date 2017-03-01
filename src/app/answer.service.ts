@@ -20,7 +20,7 @@ export class AnswerService {
     headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: headers });
     return this.http.post(this.postAnswerUrl, JSON.stringify(answer), options)
-      .map(res => console.log(res))
+      .map(answer => answer.json().data)
       .catch(this.handleError);
   }
 
@@ -28,8 +28,7 @@ export class AnswerService {
     let body = res.json();
     let answers = [];
     for (let obj of body.data) {
-      obj.local._id = obj._id;
-      answers.push(obj.local);
+      answers.push(obj);
     }
     return answers || { };
   }

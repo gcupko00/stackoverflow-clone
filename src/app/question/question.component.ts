@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ApplicationRef} from '@angular/core';
 import {QuestionService, Question} from "../question.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Answer, AnswerService} from "../answer.service";
 
 @Component({
@@ -13,7 +13,6 @@ import {Answer, AnswerService} from "../answer.service";
 // This component will be used for a question page
 export class QuestionComponent implements OnInit {
   private question: Question;
-  private answers: Answer[] = [];
   private id;
   private answerWarn: boolean = false;
   private newAnswerText: string;
@@ -28,6 +27,7 @@ export class QuestionComponent implements OnInit {
 
   ngOnInit() {
     this.getQuestion();
+    // this.getAnswers();
   }
 
   private getQuestion() {
@@ -39,7 +39,17 @@ export class QuestionComponent implements OnInit {
 
   private getAnswers() {
     this.answerService.getAnswers(this.id).subscribe(
-      answers => this.answers = answers,
+      answers => this.question.answers = answers,
+      error => console.log(error)
+    );
+  }
+
+  rateQuestion(upDown: number) {
+    this.questionService.rateQuestion(this.id, upDown).subscribe(
+      status => {
+        if (upDown < 0) this.question.rating--;
+        else this.question.rating++;
+      },
       error => console.log(error)
     );
   }
@@ -57,7 +67,8 @@ export class QuestionComponent implements OnInit {
     // post answer
     this.answerService.addAnswer(answer).subscribe(
       answer => {
-        console.log(answer);
+        this.question.answersCount++;
+        this.question.answers.push(answer);
       },
       error => console.log(error)
     );
