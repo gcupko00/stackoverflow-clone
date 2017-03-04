@@ -18,6 +18,14 @@ export class AnswerService {
   addAnswer(answer: Answer): Observable<Answer> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
+
+    /* TODO: callat kao metodu iz nekog servisa */
+    var localStorageJSON = JSON.parse(localStorage.getItem('currentUser'));
+    if (localStorageJSON != null) {
+      var localStorageJSON = JSON.parse(localStorage.getItem('currentUser'));
+      headers.append('Authorization', 'Bearer ' + localStorageJSON.token);
+    }
+
     let options = new RequestOptions({ headers: headers });
     return this.http.post(this.postAnswerUrl, JSON.stringify(answer), options)
       .map(answer => answer.json().data)

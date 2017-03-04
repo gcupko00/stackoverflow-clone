@@ -20,10 +20,6 @@ textarea {
   margin-bottom: 2em;
 }
 
-.glyphicon-alert {
-  color: #ff6846;
-}
-
 #description-warning {
   float: right;
   margin-right: 5px;

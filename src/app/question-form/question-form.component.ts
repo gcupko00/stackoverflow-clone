@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Question, QuestionService } from "../question.service";
 import { Router } from "@angular/router";
-import {NgControl, FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'question-form',
@@ -47,20 +46,17 @@ export class QuestionFormComponent {
     this.title = inputTitle.value;
     this.description = inputDescription.value;
 
-    if (this.title.length < 16) {
+    if (this.title.length < 16)
       this.titleWarn = true;
-      return;
-    }
 
-    if (this.description.length < 64) {
+    if (this.description.length < 64)
       this.descriptionWarn = true;
-      return;
-    }
 
-    if (this.tags.length == 0) {
+    if (this.tags.length == 0)
       this.tagsWarn = true;
+
+    if (this.titleWarn || this.descriptionWarn || this.tagsWarn)
       return;
-    }
 
     let question = new Question(null, this.title, this.description, this.tags, 0, 0, 0, null);
 

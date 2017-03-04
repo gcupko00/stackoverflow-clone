@@ -14,3 +14,7 @@ body > #container { height: auto; min-height: 100%; } {
 .input-form {
   width: 250px;
 }
+
+.glyphicon-alert {
+  color: #ff6846;
+}

@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AuthGuardService } from '../auth-guard.service';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'nav-bar',
   templateUrl: './nav-bar.component.html',
+  providers: [AuthGuardService, LoginService],
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent implements OnInit {
 
-  constructor() { }
+export class NavBarComponent {
 
-  ngOnInit() {
-  }
+  constructor(private authGuardService: AuthGuardService, private loginService: LoginService) { }
 
   public isCollapsed: boolean = true;
 

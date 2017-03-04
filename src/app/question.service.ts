@@ -1,11 +1,11 @@
-import {Injectable} from '@angular/core';
-import {Http, Response, Headers, RequestOptions} from "@angular/http";
-import {Observable} from "rxjs/Observable";
+import { Injectable } from '@angular/core';
+import { Http, Response, Headers, RequestOptions } from "@angular/http";
+import { Observable } from "rxjs/Observable";
 import 'rxjs/add/observable/throw'
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import {forEach} from "@angular/router/src/utils/collection";
-import {Answer} from "./answer.service";
+import { forEach } from "@angular/router/src/utils/collection";
+import { Answer } from "./answer.service";
 
 @Injectable()
 export class QuestionService {
@@ -37,6 +37,14 @@ export class QuestionService {
   addQuestion(question: Question): Observable<Question> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
+
+    /* TODO: callat kao metodu iz nekog servisa */
+    var localStorageJSON = JSON.parse(localStorage.getItem('currentUser'));
+    if (localStorageJSON != null) {
+      var localStorageJSON = JSON.parse(localStorage.getItem('currentUser'));
+      headers.append('Authorization', 'Bearer ' + localStorageJSON.token);
+    }
+
     let options = new RequestOptions({ headers: headers });
     return this.http.post(this.postQuestionUrl, JSON.stringify(question), options)
       .map(this.extractQuestionData)

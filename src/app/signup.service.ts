@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Http, Response, Headers, RequestOptions} from "@angular/http";
-import {Observable} from "rxjs/Observable";
+import { Http, Response, Headers, RequestOptions } from "@angular/http";
+import { Observable } from "rxjs/Observable";
 import 'rxjs/add/observable/throw'
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -10,7 +10,6 @@ export class SignupService {
   private signupUrl = 'http://localhost:3000/signup';
 
   constructor(private http: Http) { }
-
 
   postUser(user: User): Observable<User> {
     let headers = new Headers();
@@ -23,10 +22,7 @@ export class SignupService {
 
   private extractUserData(res: Response) {
     let body = res.json();
-    console.log(body);
-
-    body.data.local._id = body.data._id;
-    return body.data.local || { };
+    return body;
   }
 
   private handleError(error: Response | any) {
