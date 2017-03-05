@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { User, SignupService } from "../signup.service";
+import { SignupService } from "../services/signup.service";
+import { Route, Router } from "@angular/router";
+import { User } from "../../model/User";
 
 @Component({
   selector: 'app-sign-up',
@@ -18,7 +20,10 @@ export class SignUpComponent {
   private emailWarn: boolean = false;
   private failedSignupWarn: boolean = false;
 
-  constructor(private signupService: SignupService) { }
+  constructor(
+    private signupService: SignupService,
+    private router: Router)
+  { }
 
   private signup(inputUsername: HTMLInputElement, inputPassword: HTMLInputElement, inputEmail: HTMLInputElement) {
     this.username = inputUsername.value;
@@ -37,13 +42,15 @@ export class SignUpComponent {
     if (this.usernameWarn || this.passwordWarn || this.emailWarn)
       return;
 
-    let user = new User(null, this.username, this.email, this.password, "", 0);
+    let user = new User(null, this.username, this.email, this.password, "", 0, null, null);
 
     console.log(user);
 
     this.signupService.postUser(user).subscribe(
       user => {
         console.log(user);
+        if (this.router.url == '/signup')
+          this.router.navigate(['/home']);
         //auth
       },
       error => {

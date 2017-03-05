@@ -5,7 +5,7 @@ import 'rxjs/add/observable/throw'
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { forEach } from "@angular/router/src/utils/collection";
-import { Answer } from "./answer.service";
+import {Question} from "../../model/Question";
 
 @Injectable()
 export class QuestionService {
@@ -94,17 +94,4 @@ export class QuestionService {
     console.error(errMsg);
     return Observable.throw(errMsg);
   }
-}
-
-export class Question {
-  constructor (
-    public _id: string,
-    public title: string,
-    public description: string,
-    public tags: string[],
-    public rating: number,
-    public answersCount: number,
-    public views: number,
-    public answers: Answer[]
-  ) { }
 }

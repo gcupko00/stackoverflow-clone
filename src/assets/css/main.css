@@ -2,6 +2,10 @@ menu-panel {
   margin-bottom: 1em;
 }
 
+.form-wrapper {
+  max-width: 600px;
+}
+
 .tag-container {
   margin-bottom: 0.5em;
 }
@@ -15,8 +19,8 @@ menu-panel {
 }
 
 .confirm-button {
-  margin-left: 10rem;
   margin-top: 2rem;
+  margin-bottom: 2em;
   width: 74px;
 }
 
@@ -28,4 +32,33 @@ menu-panel {
 .input-label:not(:first-of-type) {
   margin-top: 15px;
   margin-left: 8px;
+}
+
+.rating-container {
+  float: left;
+  margin: 5px;
+  padding: 3px;
+  width: 50px;
+  text-align: center;
+  font-size: large;
+}
+
+.rating-container > span {
+  display: block;
+  margin: 0 auto;
+}
+
+.text-container {
+  display: table;
+  vertical-align: top;
+  font-size: larger;
+  margin: 5px;
+}
+
+.rating-tooltip-root {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  margin-left: -9px;
+  margin-top: -18px;
 }

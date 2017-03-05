@@ -1,0 +1,16 @@
+<div class="rating-container">
+  <a href="javascript:void(0)">
+    <span class="glyphicon glyphicon-triangle-top" (click)="rateAnswer(1)" style="vertical-align: middle">
+      <span class="rating-tooltip-root" tooltip="You're not logged in!" *ngIf="!authGuardService.isLoggedIn()"></span>
+    </span>
+  </a>
+  <span>{{answer.rating}}</span>
+  <a href="javascript:void(0)">
+    <span class="glyphicon glyphicon-triangle-bottom" (click)="rateAnswer(-1)" style="vertical-align: baseline">
+      <span class="rating-tooltip-root" tooltip="You're not logged in!" *ngIf="!authGuardService.isLoggedIn()"></span>
+    </span>
+  </a>
+</div>
+<div class="text-container">
+  <span>{{answer.text}}</span>
+</div>

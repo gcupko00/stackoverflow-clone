@@ -1,7 +1,8 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import { QuestionService, Question } from '../question.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { QuestionService } from '../services/question.service';
 import * as _ from 'lodash';
 import { Router, ActivatedRoute } from "@angular/router";
+import { Question } from "../../model/Question";
 
 @Component({
   selector: 'questions',

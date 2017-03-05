@@ -23,6 +23,7 @@ import { QuestionFormComponent } from './question-form/question-form.component';
 import { TagsComponent } from './tags/tags.component';
 import { MaxLengthPipe } from './max-length.pipe';
 import { UsersComponent } from './users/users.component';
+import { AnswerComponent } from './answer/answer.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -58,7 +59,8 @@ const appRoutes: Routes = [
     QuestionFormComponent,
     TagsComponent,
     MaxLengthPipe,
-    UsersComponent
+    UsersComponent,
+    AnswerComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthGuardService } from '../auth-guard.service';
-import { LoginService } from '../login.service';
+import { AuthGuardService } from '../services/auth-guard.service';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'nav-bar',

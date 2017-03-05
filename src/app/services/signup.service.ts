@@ -4,6 +4,7 @@ import { Observable } from "rxjs/Observable";
 import 'rxjs/add/observable/throw'
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import { User } from "../../model/User";
 
 @Injectable()
 export class SignupService {
@@ -39,13 +40,3 @@ export class SignupService {
   }
 }
 
-export class User {
-  constructor(
-    public _id: string,
-    public username: string,
-    public email: string,
-    public password: string,
-    public imageUrl: string,
-    public reputation: number) {
-  }
-}

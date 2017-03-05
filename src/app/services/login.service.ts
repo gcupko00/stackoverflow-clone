@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from "@angular/http";
 import { Observable } from "rxjs/Observable";
-import { User } from "./signup.service";
 import 'rxjs/add/observable/throw'
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import { User } from "../../model/User";
 
 @Injectable()
 export class LoginService {
@@ -48,7 +48,7 @@ export class LoginService {
     if (token) {
       this.token = token;
       this.username = res.json().username;
-
+      console.log(res.json());
       // store username and jwt token in local storage to keep user logged in between page refreshes
       localStorage.setItem('currentUser', JSON.stringify({ username: res.json().username, token: token }));
       return true;

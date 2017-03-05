@@ -12,7 +12,7 @@ body > #container { height: auto; min-height: 100%; } {
 }
 
 .input-form {
-  width: 250px;
+  width: 100%;
 }
 
 .glyphicon-alert {

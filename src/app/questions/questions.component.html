@@ -1,8 +1,8 @@
 <div class="list-group col-md-10 col-sm-9 col-xs-12">
   <ul class="nav nav-tabs pull-right">
-    <li role="presentation"><a href="/questions" routerLink="/questions/new/" (click)="this.currentPage = 1">New</a></li>
-    <li role="presentation"><a href="/questions" routerLink="/questions/top/" (click)="this.currentPage = 1">Top</a></li>
-    <li role="presentation"><a href="/questions" routerLink="/questions/unanswered/" (click)="this.currentPage = 1">Unanswered</a></li>
+    <li role="presentation" [ngClass]="{'active' : criteria == 'new'}"><a href="/questions" routerLink="/questions/new/" (click)="this.currentPage = 1">New</a></li>
+    <li role="presentation" [ngClass]="{'active' : criteria == 'top'}"><a href="/questions" routerLink="/questions/top/" (click)="this.currentPage = 1">Top</a></li>
+    <li role="presentation" [ngClass]="{'active' : criteria == 'unanswered'}"><a href="/questions" routerLink="/questions/unanswered/" (click)="this.currentPage = 1">Unanswered</a></li>
   </ul>
 
   <div class="questions-container">

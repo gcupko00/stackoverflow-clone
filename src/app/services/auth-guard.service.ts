@@ -6,7 +6,7 @@ export class AuthGuardService implements CanActivate {
 
   constructor(private router: Router) { }
 
-  public isVisible() {
+  public isLoggedIn() {
     if (localStorage.getItem('currentUser'))
       return true;
 
@@ -14,10 +14,14 @@ export class AuthGuardService implements CanActivate {
   }
 
   public canActivate() {
-    if (this.isVisible())
+    if (this.isLoggedIn())
       return true;
 
     this.router.navigate(['/login']);
     return false;
+  }
+
+  public getUser() {
+    return JSON.parse(localStorage.getItem('currentUser'));
   }
 }

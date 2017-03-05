@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { User } from "../signup.service";
-import { LoginService } from "../login.service";
-import { Router } from "@angular/router";
+import { LoginService } from "../services/login.service";
+import {Router, ActivatedRoute} from "@angular/router";
+import {User} from "../../model/User";
 
 @Component({
   selector: 'app-log-in',
@@ -18,13 +18,17 @@ export class LogInComponent {
   private passwordWarn: boolean = false;
   private failedLoginWarn: boolean = false;
 
-  constructor(private loginService: LoginService, private router: Router) { }
+  constructor(
+    private loginService: LoginService,
+    private router: Router)
+  { }
 
   private login(inputPassword: HTMLInputElement, inputEmail: HTMLInputElement) {
     this.password = inputPassword.value;
     this.email = inputEmail.value;
 
-    if (this.email.length < 4) /*TO-ADD !address.contains("@")*/
+    if (this.email.length < 4) /*TO-ADD !address.contains("@") - mislim da Angular 2 ili javascript
+    ima već nešto ugrađeno za to, pa možeš to iskoristiti*/
       this.emailWarn = true;
 
     if (this.password.length < 4)
@@ -33,13 +37,14 @@ export class LogInComponent {
     if (this.passwordWarn || this.emailWarn)
       return;
 
-    let user = new User(null, "", this.email, this.password, "", 0);
+    let user = new User(null, "", this.email, this.password, "", 0, null, null);
 
     this.loginService.postUser(user).subscribe(
       jwtToken => {
         console.log(jwtToken)
 
-        this.router.navigate(['/home']);
+        if (this.router.url == '/login')
+         this.router.navigate(['/home']);
         //auth succ function
         //set route to home
       },

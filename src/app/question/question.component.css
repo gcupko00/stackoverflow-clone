@@ -2,6 +2,10 @@ textarea {
   resize: vertical;
 }
 
+app-log-in {
+  margin-bottom: 2em;
+}
+
 .question-container > .panel-heading {
   background-color: #ffff99;
   color: darkslateblue;
@@ -19,27 +23,6 @@ textarea {
 .post-answer-container > .panel-heading {
   background-color: transparent;
   border-bottom-width: 0px;
-}
-
-.rating-container {
-  float: left;
-  margin: 5px;
-  padding: 3px;
-  width: 50px;
-  text-align: center;
-  font-size: large;
-}
-
-.rating-container > span {
-  display: block;
-  margin: 0 auto;
-}
-
-.text-container {
-  display: table;
-  vertical-align: top;
-  font-size: larger;
-  margin: 5px;
 }
 
 .glyphicon-alert {

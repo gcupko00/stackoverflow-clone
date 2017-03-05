@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { Question, QuestionService } from "../question.service";
+import { QuestionService } from "../services/question.service";
 import { Router } from "@angular/router";
+import { AuthGuardService } from "../services/auth-guard.service";
+import { Question } from "../../model/Question";
 
 @Component({
   selector: 'question-form',
   templateUrl: './question-form.component.html',
-  providers: [QuestionService],
+  providers: [QuestionService, AuthGuardService],
   styleUrls: ['./question-form.component.css']
 })
 
@@ -23,8 +25,13 @@ export class QuestionFormComponent {
   submitted = false;
 
   constructor(
+    private authGuardService: AuthGuardService,
     private questionService: QuestionService,
     private router: Router) {
+
+    if (!this.authGuardService.isLoggedIn()) {
+      this.router.navigateByUrl('login');
+    }
   }
 
   private addTag(input: HTMLInputElement) {
@@ -58,7 +65,7 @@ export class QuestionFormComponent {
     if (this.titleWarn || this.descriptionWarn || this.tagsWarn)
       return;
 
-    let question = new Question(null, this.title, this.description, this.tags, 0, 0, 0, null);
+    let question = new Question(null, this.title, this.description, this.tags, 0, 0, 0, null, null);
 
     this.questionService.addQuestion(question).subscribe(
       question => {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Http, Response, Headers, RequestOptions} from "@angular/http";
+import { Http, Response, Headers, RequestOptions } from "@angular/http";
 import { Observable } from "rxjs";
+import { Answer } from "../../model/Answer";
 
 @Injectable()
 export class AnswerService {
@@ -53,13 +54,13 @@ export class AnswerService {
     console.error(errMsg);
     return Observable.throw(errMsg);
   }
+
+  rateAnswer(_id: string, upDown: number) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.put(this.getAnswersUrl + _id + "/rate", JSON.stringify({upDown: upDown}), { headers: headers })
+      .map(res => res.ok)
+      .catch(this.handleError);
+  }
 }
 
-export class Answer {
-  constructor(
-    public _id: string,
-    public _question: string,
-    public text: string,
-    public rating: number
-  ) { }
-}
