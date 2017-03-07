@@ -6,6 +6,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { forEach } from "@angular/router/src/utils/collection";
 import {Question} from "../../model/Question";
+import {User} from "../../model/User";
 
 @Injectable()
 export class QuestionService {
@@ -57,10 +58,10 @@ export class QuestionService {
       .catch(this.handleError)
   }
 
-  rateQuestion(id: string, upDown: number): Observable<boolean> {
+  rateQuestion(id: string, user: User, upDown: number): Observable<boolean> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put(this.questionUrl + id + "/rate", JSON.stringify({upDown: upDown}), { headers: headers })
+    return this.http.put(this.questionUrl + id + "/rate", JSON.stringify(Object.assign({}, {upDown: upDown}, {user: user._id})), { headers: headers })
       .map(res => res.ok)
       .catch(this.handleError);
   }
@@ -68,7 +69,6 @@ export class QuestionService {
   private extractQuestionData(res: Response) {
     let body = res.json();
     body.data.local._id = body.data._id;
-    console.log(body.data.local);
     return body.data.local || { };
   }
 

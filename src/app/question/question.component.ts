@@ -37,13 +37,12 @@ export class QuestionComponent implements OnInit {
   ngOnInit() {
     this.getQuestion();
     // this.getAnswers();
-    console.log(this.authGuardService.getUser());
   }
 
   rateQuestion(upDown: number) {
     if (!this.authGuardService.isLoggedIn()) return;
 
-    this.questionService.rateQuestion(this.id, upDown).subscribe(
+    this.questionService.rateQuestion(this.id, this.authGuardService.getUser(), upDown).subscribe(
       status => {
         if (upDown < 0) this.question.rating--;
         else this.question.rating++;
@@ -60,6 +59,7 @@ export class QuestionComponent implements OnInit {
   private getQuestion() {
     this.questionService.getQuestion(this.id).subscribe(
       question => {
+        console.log(question);
         this.question = question;
         this.answers = this.question.answers;
       },

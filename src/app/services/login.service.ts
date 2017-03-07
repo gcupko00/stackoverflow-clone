@@ -48,9 +48,8 @@ export class LoginService {
     if (token) {
       this.token = token;
       this.username = res.json().username;
-      console.log(res.json());
       // store username and jwt token in local storage to keep user logged in between page refreshes
-      localStorage.setItem('currentUser', JSON.stringify({ username: res.json().username, token: token }));
+      localStorage.setItem('currentUser', JSON.stringify({ _id: res.json()._id, username: res.json().username, token: token }));
       return true;
     }
 

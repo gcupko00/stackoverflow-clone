@@ -41,8 +41,6 @@ export class LogInComponent {
 
     this.loginService.postUser(user).subscribe(
       jwtToken => {
-        console.log(jwtToken)
-
         if (this.router.url == '/login')
          this.router.navigate(['/home']);
         //auth succ function

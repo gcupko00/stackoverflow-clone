@@ -41,8 +41,6 @@ export class QuestionFormComponent {
       this.tags.push(value);
       input.value = "";
     }
-
-    console.log(this.title);
   }
 
   private deleteTag(tag: string) {
@@ -65,7 +63,7 @@ export class QuestionFormComponent {
     if (this.titleWarn || this.descriptionWarn || this.tagsWarn)
       return;
 
-    let question = new Question(null, this.title, this.description, this.tags, 0, 0, 0, null, null);
+    let question = new Question(null, this.title, this.description, this.tags, 0, 0, 0, null, this.authGuardService.getUser());
 
     this.questionService.addQuestion(question).subscribe(
       question => {
