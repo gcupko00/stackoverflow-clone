@@ -40,12 +40,16 @@ export class QuestionComponent implements OnInit {
   }
 
   rateQuestion(upDown: number) {
-    if (!this.authGuardService.isLoggedIn()) return;
+    // loš pokušaj
+    console.log(this.authGuardService.getUser().ratedQuestions.indexOf(this.id) >= 0);
+    if (!this.authGuardService.isLoggedIn()
+      || this.authGuardService.getUser().ratedQuestions.indexOf(this.id) >= 0) return;
 
     this.questionService.rateQuestion(this.id, this.authGuardService.getUser(), upDown).subscribe(
       status => {
         if (upDown < 0) this.question.rating--;
         else this.question.rating++;
+        this.authGuardService.getUser().ratedQuestions.push(this.id);
       },
       error => console.log(error)
     );

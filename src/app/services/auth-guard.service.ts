@@ -21,7 +21,11 @@ export class AuthGuardService implements CanActivate {
     return false;
   }
 
-  public getUser() {
+  public getCurrentUser() {
     return JSON.parse(localStorage.getItem('currentUser'));
+  }
+
+  public getUser() {
+    return JSON.parse(localStorage.getItem('user'))
   }
 }
