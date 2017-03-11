@@ -1,5 +1,5 @@
 import { Answer } from "./Answer";
-import {User} from "./User";
+import { User } from "./User";
 
 export class Question {
   constructor(
@@ -11,6 +11,6 @@ export class Question {
     public answersCount: number,
     public views: number,
     public answers: Answer[],
-    public user: User) {
-  }
+    public user: User
+  ) {}
 }

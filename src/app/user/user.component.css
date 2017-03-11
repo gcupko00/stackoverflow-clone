@@ -1,0 +1,73 @@
+body{
+  padding-top:25px !important;
+}
+
+.stats {
+  text-align:center;
+  text-shadow:1px 1px 0px #fff;
+  margin-top:25px;
+}
+
+.stats li{
+  width:125px;
+}
+
+.stats span{
+  font-family:Helvetica;
+  font-weight:bold;
+  text-shadow:1px 1px 0px #fff;
+  font-size:4em;
+  display:block;
+  line-height:1em;
+}
+
+.box {
+  display: inline-block;
+  margin: 1em;
+  vertical-align: top;
+}
+
+.stats-container {
+  max-width: 300px;
+  margin: auto;
+  margin-top: 2em;
+}
+
+div > .stats-container {
+  vertical-align: bottom;
+}
+
+.stats-container > div {
+  text-align: center;
+  padding-top: 2%;
+}
+
+.rating-stat {
+  border-radius: 2% 0 0 2%;
+}
+
+.views-stat {
+  border-radius: 0 2% 2% 0;
+}
+
+.badge-label {
+  display: block;
+  font-size: smaller;
+}
+
+.stat {
+  border: 1px solid darkgray;
+}
+
+.button-confirm {
+  margin-right: 1em;
+}
+
+.url-form {
+  margin-bottom: 2em;
+  margin-top: 1em;
+}
+
+h3 {
+  margin-top: 0;
+}

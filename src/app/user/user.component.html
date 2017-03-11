@@ -1,1 +1,61 @@
-<h1>works</h1>
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<div class="container profile">
+  <div class="col-md-10 col-sm-9 col-xs-12">
+    <div class="span12">
+      <div class="well well-small clearfix">
+        <div class="row-fluid">
+          <div class="box">
+            <img src="{{user.imageUrl}}" alt="No image found" class="img-thumbnail"/>
+          </div>
+          <div class="box">
+            <h2>{{user.username}}</h2>
+            <ul class="unstyled">
+              <li><i class="icon-phone"></i> 095 214 2042</li>
+              <li><i class="icon-envelope"></i> {{user.email}}</li>
+            </ul>
+
+            <div class="stats-container">
+              <div class="col-xs-4 col-sm-4 col-md-4 rating-stat stat">
+                <span class="badge">{{user.reputation}}</span>
+                <label class="badge-label">reputation</label>
+              </div>
+              <div class="col-xs-4 col-sm-4 col-md-4 stat">
+                <span class="badge">{{user.questions.length}}</span>
+                <label class="badge-label">questions</label>
+              </div>
+              <div class="col-xs-4 col-sm-4 col-md-4 views-stat stat">
+                <span class="badge">{{user.answers.length}}</span>
+                <label class="badge-label">answers</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="well clearfix">
+        <a *ngIf="!changeProfileImg" (click)="toggleChangeProfileImg()" class="btn btn-lg btn-info"
+           data-toggle="modal" data-target="#profile-img-update-modal">
+          <span class="glyphicon glyphicon-picture"></span>  Update profile picture
+        </a>
+
+        <div *ngIf="changeProfileImg">
+          <h3><label class="input-label">URL to your new profile picture</label></h3>
+          <div class="input-group input-form url-form">
+            <input #inputImgUrl type="email" class="form-control" placeholder="http://i.imgur.com/FMukDzK.jpg"
+                   (focus)="hideImgUrlWarn()">
+            <span *ngIf="imgUrlWarn" class="input-group-addon"
+                  tooltip="Url is too short!" placement="right">
+              <i class="glyphicon glyphicon-alert"></i>
+            </span>
+          </div>
+          <a (click)="postNewProfileImg(inputImgUrl)" class="button-confirm btn btn-lg btn-success">
+            <span class="glyphicon glyphicon-ok"></span> Confirm
+          </a>
+          <a (click)="toggleChangeProfileImg()" class="btn btn-lg btn-danger">
+            <span class="glyphicon glyphicon-remove"></span> Cancel
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

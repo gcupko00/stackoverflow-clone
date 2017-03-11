@@ -1,11 +1,11 @@
-import {Component, OnInit, ApplicationRef} from '@angular/core';
-import {QuestionService} from "../services/question.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {AnswerService} from "../services/answer.service";
-import {AuthGuardService} from "../services/auth-guard.service";
-import {Question} from "../../model/Question";
-import {Answer} from "../../model/Answer";
-import {forEach} from "@angular/router/src/utils/collection";
+import { Component, OnInit } from '@angular/core';
+import { QuestionService } from "../services/question.service";
+import { ActivatedRoute } from "@angular/router";
+import { AnswerService } from "../services/answer.service";
+import { AuthGuardService } from "../services/auth-guard.service";
+import { Question } from "../../model/Question";
+import { Answer } from "../../model/Answer";
+import { forEach } from "@angular/router/src/utils/collection";
 
 @Component({
   selector: 'question',

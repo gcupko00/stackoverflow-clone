@@ -29,9 +29,19 @@
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right" *ngSwitchCase="true">
-        <li><a *ngIf="!authGuardService.isLoggedIn()" routerLink="/login" routerLinkActive="active"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Log in</a></li>
-        <li><a *ngIf="authGuardService.isLoggedIn()" (click)="loginService.logout()" routerLink="/login" routerLinkActive="active"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Log out</a></li>
-        <li><a *ngIf="!authGuardService.isLoggedIn()" routerLink="/signup" routerLinkActive="active"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Sign up</a></li>
+        <li><a *ngIf="!authGuardService.isLoggedIn()" routerLink="/login" routerLinkActive="active">
+          <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+           Log in
+        </a></li>
+        <li><a *ngIf="authGuardService.isLoggedIn()" (click)="loginService.logout()"
+               routerLink="/login" routerLinkActive="active">
+          <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+           Log out
+        </a></li>
+        <li><a *ngIf="!authGuardService.isLoggedIn()" routerLink="/signup" routerLinkActive="active">
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+           Sign up
+        </a></li>
         <li>
           <a dropdown  class="dropdown" role="button">
             <div dropdownToggle class="dropdown-toggle">
@@ -53,11 +63,16 @@
           <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
           &nbsp;Achievements
         </a></li>
-        <li><a routerLink="/login" routerLinkActive="active">
+        <li><a *ngIf="authGuardService.isLoggedIn()" (click)="loginService.logout()"
+               routerLink="/login" routerLinkActive="active">
+          <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+          &nbsp;Log out
+        </a></li>
+        <li><a *ngIf="!authGuardService.isLoggedIn()" routerLink="/login" routerLinkActive="active">
           <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
           &nbsp;Log in
         </a></li>
-        <li><a routerLink="/signup" routerLinkActive="active">
+        <li><a *ngIf="!authGuardService.isLoggedIn()" routerLink="/signup" routerLinkActive="active">
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
           &nbsp;Sign up
         </a></li>

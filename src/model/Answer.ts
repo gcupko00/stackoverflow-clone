@@ -1,4 +1,5 @@
-import {User} from "./User";
+import { User } from "./User";
+
 export class Answer {
   constructor(
     public _id: string,
@@ -6,5 +7,5 @@ export class Answer {
     public text: string,
     public rating: number,
     public user: User
-  ) { }
+  ) {}
 }

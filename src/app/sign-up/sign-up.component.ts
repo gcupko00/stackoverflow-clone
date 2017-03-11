@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SignupService } from "../services/signup.service";
-import { Route, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { User } from "../../model/User";
 
 @Component({
@@ -57,7 +57,7 @@ export class SignUpComponent {
         console.log(error);
         this.failedSignupWarn = true;
       }
-  );
+    );
   }
 
   private hideUsernameWarn() {

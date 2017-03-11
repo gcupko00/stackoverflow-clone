@@ -1,5 +1,6 @@
-import {Question} from "./Question";
-import {Answer} from "./Answer";
+import { Question } from "./Question";
+import { Answer } from "./Answer";
+
 export class User {
   constructor(
     public _id: string,
@@ -10,6 +11,5 @@ export class User {
     public reputation: number,
     public questions: Question[],
     public answers: Answer[]
-  )
-  { }
+  ) {}
 }
