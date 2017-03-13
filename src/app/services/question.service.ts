@@ -4,9 +4,8 @@ import { Observable } from "rxjs/Observable";
 import 'rxjs/add/observable/throw'
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import { forEach } from "@angular/router/src/utils/collection";
-import {Question} from "../../model/Question";
-import {User} from "../../model/User";
+import { Question } from "../../model/Question";
+import { User } from "../../model/User";
 
 @Injectable()
 export class QuestionService {

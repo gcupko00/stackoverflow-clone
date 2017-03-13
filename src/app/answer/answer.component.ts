@@ -4,7 +4,7 @@ import {AnswerService} from "../services/answer.service";
 import {AuthGuardService} from "../services/auth-guard.service";
 
 @Component({
-  selector: 'app-answer',
+  selector: 'answer',
   templateUrl: './answer.component.html',
   providers: [AnswerService],
   styleUrls: ['./answer.component.css']

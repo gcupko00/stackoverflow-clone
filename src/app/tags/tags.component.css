@@ -1,23 +1,36 @@
-.main-tags-container {
+a {
+  text-decoration: none;
+}
+
+button {
+  float: right;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.tags-container {
   margin-top: 1em;
   margin-bottom: 3em;
 }
 
 @media only screen and (max-width:767px) {
-  .main-tags-container > a {
+  .tags-container > a {
     margin-right: 0;
     margin-bottom: 0;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .main-tags-container > a {
+  .tags-container > a {
     margin-right: 1em;
     margin-bottom: 1em;
     border-radius: 2%;
   }
 }
-.main-tags-container > a {
+
+.tags-container > a {
   display: inline;
   padding-top: 0.5em;
   border: 1px solid lightblue;
@@ -25,12 +38,21 @@
   min-width: 150px;
 }
 
-.main-tags-container > a > p {
-  margin-top: 0.5em;
-  font-size: smaller;
-  text-align: justify;
+.filter-container {
+  display: inline-table;
+  width: 50%;
+  max-width: 800px;
 }
 
-a {
-  text-decoration: none;
+.input-container {
+  margin-bottom: 2em;
+}
+
+.input-group-btn > button {
+  margin-top: 1em;
+}
+
+.new-tag-form > .input-group{
+  margin-top: 1em;
+  width: 100%;
 }

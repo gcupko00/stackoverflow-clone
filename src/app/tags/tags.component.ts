@@ -1,35 +1,74 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import { TagService } from "../services/tag.service";
+import {Tag} from "../../model/Tag";
+import {AuthGuardService} from "../services/auth-guard.service";
 
 @Component({
   selector: 'tags',
   templateUrl: './tags.component.html',
+  providers: [TagService, AuthGuardService],
   styleUrls: ['./tags.component.css']
 })
 
-export class TagsComponent {
+export class TagsComponent implements OnInit {
   private tags: Tag[] = [];
+  private page = 1;
+  private filter = "";
+  private tagExists = false;
+  private showNewTagForm = false;
+  private descrWarn = false;
 
-  constructor() {
-    this.tags.push(new Tag("wpf", "Lorem ipsum dolor sit amet, interdum nulla, nec quam, feugiat nisl."));
-    this.tags.push(new Tag("javascript", "Ac lacinia, a in. Penatibus sit suscipit, vel nam. Et praesent parturient, pharetra nunc mauris. Id arcu."));
-    this.tags.push(new Tag("wpf", "Lorem ipsum dolor sit amet, interdum nulla, nec quam, feugiat nisl."));
-    this.tags.push(new Tag("javascript", "Ac lacinia, a in. Penatibus sit suscipit, vel nam. Et praesent parturient, pharetra nunc mauris. Id arcu."));
-    this.tags.push(new Tag("wpf", "Lorem ipsum dolor sit amet, interdum nulla, nec quam, feugiat nisl."));
-    this.tags.push(new Tag("javascript", "Ac lacinia, a in. Penatibus sit suscipit, vel nam. Et praesent parturient, pharetra nunc mauris. Id arcu."));
-    this.tags.push(new Tag("wpf", "Lorem ipsum dolor sit amet, interdum nulla, nec quam, feugiat nisl."));
-    this.tags.push(new Tag("javascript", "Ac lacinia, a in. Penatibus sit suscipit, vel nam. Et praesent parturient, pharetra nunc mauris. Id arcu."));
-    this.tags.push(new Tag("wpf", "Lorem ipsum dolor sit amet, interdum nulla, nec quam, feugiat nisl."));
-    this.tags.push(new Tag("javascript", "Ac lacinia, a in. Penatibus sit suscipit, vel nam. Et praesent parturient, pharetra nunc mauris. Id arcu."));
+  constructor(
+    private tagService: TagService,
+    private authGuardService: AuthGuardService
+  ) { }
 
+  ngOnInit() {
+    this.getTags();
   }
-}
 
-class Tag {
-  public tagName: string;
-  public tagDescription: string;
+  private filterTags(filter: HTMLInputElement) {
+    this.filter = filter.value;
+    this.getTags();
+  }
 
-  constructor(name: string, description: string = "") {
-    this.tagName = name;
-    this.tagDescription = description;
+  private checkTagExists(tagName: HTMLInputElement) {
+    this.tagExists = false;
+    if (tagName.value.length > 0)
+      this.getTag(tagName.value);
+  }
+
+  private addTag(nameInput: HTMLInputElement, descriptionInput: HTMLInputElement) {
+    let tagName = nameInput.value;
+    let tagDescr = descriptionInput.value;
+
+    if (tagDescr.length < 16 || tagDescr.length > 256) {
+      this.descrWarn = true;
+      return;
+    }
+
+    this.tagService.postTag(new Tag(null, tagName, tagDescr, 0, null)).subscribe(
+      tag => this.getTags(),
+      error => console.log(error)
+    );
+  }
+
+  private getTags() {
+    this.tagService.getTags(this.page, this.filter).subscribe(
+      tags => this.tags = tags,
+      error => console.log(error)
+    );
+  }
+
+  private getTag(tagName: string) {
+    this.tagService.getTag(tagName).subscribe(
+      tag => {
+        if (tag.name)
+          this.tagExists = true;
+        else
+          this.tagExists = false;
+      },
+      error => this.tagExists = false
+    );
   }
 }

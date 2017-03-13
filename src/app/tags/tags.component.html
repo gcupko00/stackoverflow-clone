@@ -1,6 +1,29 @@
-<div class="main-tags-container col-md-10 col-sm-9 col-xs-12">
-  <a class="col-md-2 col-sm-3 col-xs-6" href="javascript:void(0)" *ngFor="let tag of tags">
-    <span class="label label-info">{{tag.tagName}}</span>
-    <p>{{tag.tagDescription | maxLength: 70}}</p>
-  </a>
+<div class="main-container col-md-10 col-sm-9 col-xs-12">
+  <div class="input-container">
+    <div class="filter-container input-group">
+      <span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
+      <input type="text" class="form-control" placeholder="Filter" (keyup)="filterTags(filter)" #filter>
+    </div>
+    <button type="button" class="btn btn-success" *ngIf="authGuardService.isLoggedIn()" (click)="showNewTagForm = !showNewTagForm"><span class="glyphicon glyphicon-plus"></span></button>
+    <div class="new-tag-form" *ngIf="authGuardService.isLoggedIn() && showNewTagForm">
+      <div class="input-group">
+        <span class="input-group-addon">Tag name: </span>
+        <input type="text" class="form-control" placeholder="name" #newTagName (keyup)="checkTagExists(newTagName)">
+        <span class="input-group-addon" *ngIf="tagExists" tooltip="Tag already exists!" placement="top">
+        <i class="glyphicon glyphicon-alert"></i>
+      </span>
+      </div>
+      <div class="input-group">
+        <textarea type="text" class="form-control" placeholder="Short description" #newTagDescription (keyup)="descrWarn = false"></textarea>
+      </div>
+      <div class="input-group-btn">
+        <button type="submit" class="btn btn-info" (click)="addTag(newTagName, newTagDescription)">Save tag</button>
+      </div>
+    </div>
+  </div>
+  <div class="tags-container">
+    <a class="col-md-2 col-sm-3 col-xs-6" href="javascript:void(0)" *ngFor="let tag of tags">
+      <tag [tag]="tag"></tag>
+    </a>
+  </div>
 </div>

@@ -24,6 +24,7 @@ import { TagsComponent } from './tags/tags.component';
 import { MaxLengthPipe } from './max-length.pipe';
 import { UsersComponent } from './users/users.component';
 import { AnswerComponent } from './answer/answer.component';
+import { TagComponent } from './tag/tag.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -60,7 +61,8 @@ const appRoutes: Routes = [
     TagsComponent,
     MaxLengthPipe,
     UsersComponent,
-    AnswerComponent
+    AnswerComponent,
+    TagComponent
   ],
   imports: [
     BrowserModule,

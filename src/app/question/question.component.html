@@ -30,7 +30,7 @@
     <div class="panel-body">
       <div class="alert alert-info" *ngIf="!(question?.answersCount > 0)" role="alert">There are still no answers to this question. Please contribute if you can.</div>
       <div class="answer-container panel panel-body" *ngFor="let answer of answers">
-        <app-answer [answer]="answer"></app-answer>
+        <answer [answer]="answer"></answer>
       </div>
     </div>
     <div class="post-answer-container panel panel-default">

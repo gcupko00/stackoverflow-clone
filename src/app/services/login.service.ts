@@ -63,6 +63,7 @@ export class LoginService {
     this.token = null;
     this.username = null;
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('user');
   }
 
   private handleError(error: Response | any) {
