@@ -17,6 +17,8 @@ export class TagsComponent implements OnInit {
   private tagExists = false;
   private showNewTagForm = false;
   private descrWarn = false;
+  private newTagName;
+  private newTagDescription;
 
   constructor(
     private tagService: TagService,
@@ -32,23 +34,25 @@ export class TagsComponent implements OnInit {
     this.getTags();
   }
 
-  private checkTagExists(tagName: HTMLInputElement) {
+  private checkTagExists() {
     this.tagExists = false;
-    if (tagName.value.length > 0)
-      this.getTag(tagName.value);
+    if (this.newTagName.length > 0)
+      this.getTag(this.newTagName);
   }
 
-  private addTag(nameInput: HTMLInputElement, descriptionInput: HTMLInputElement) {
-    let tagName = nameInput.value;
-    let tagDescr = descriptionInput.value;
-
-    if (tagDescr.length < 16 || tagDescr.length > 256) {
+  private onSubmit() {
+    if (this.newTagDescription.length < 16 || this.newTagDescription.length > 256) {
       this.descrWarn = true;
       return;
     }
 
-    this.tagService.postTag(new Tag(null, tagName, tagDescr, 0, null)).subscribe(
-      tag => this.getTags(),
+    this.tagService.postTag(new Tag(null, this.newTagName, this.newTagDescription, 0, null)).subscribe(
+      tag => {
+        this.getTags();
+        this.showNewTagForm = false;
+        this.newTagDescription = "";
+        this.newTagName = "";
+      },
       error => console.log(error)
     );
   }

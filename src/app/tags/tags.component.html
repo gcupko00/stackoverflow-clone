@@ -8,16 +8,16 @@
     <div class="new-tag-form" *ngIf="authGuardService.isLoggedIn() && showNewTagForm">
       <div class="input-group">
         <span class="input-group-addon">Tag name: </span>
-        <input type="text" class="form-control" placeholder="name" #newTagName (keyup)="checkTagExists(newTagName)">
+        <input type="text" class="form-control" placeholder="name" [(ngModel)]="newTagName" (keyup)="checkTagExists(newTagName)">
         <span class="input-group-addon" *ngIf="tagExists" tooltip="Tag already exists!" placement="top">
         <i class="glyphicon glyphicon-alert"></i>
       </span>
       </div>
       <div class="input-group">
-        <textarea type="text" class="form-control" placeholder="Short description" #newTagDescription (keyup)="descrWarn = false"></textarea>
+        <textarea type="text" class="form-control" placeholder="Short description" [(ngModel)]="newTagDescription" (keyup)="descrWarn = false"></textarea>
       </div>
       <div class="input-group-btn">
-        <button type="submit" class="btn btn-info" (click)="addTag(newTagName, newTagDescription)">Save tag</button>
+        <button type="submit" class="btn btn-info" (click)="onSubmit()">Save tag</button>
       </div>
     </div>
   </div>

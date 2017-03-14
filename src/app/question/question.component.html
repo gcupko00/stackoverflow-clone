@@ -44,7 +44,7 @@
           </span>
         </div>
         <div class="form-group">
-          <textarea title="Answer text" class="form-control" rows="3" #inputAnswer (focus)="removeAnswerWarn()"></textarea>
+          <textarea title="Answer text" class="form-control" rows="3" (focus)="removeAnswerWarn()" [(ngModel)]="newAnswerText"></textarea>
         </div>
         <div class="panel-group" *ngIf="!authGuardService.isLoggedIn()">
           <div class="panel panel-default">
@@ -64,7 +64,7 @@
           </div>
         </div>
         <div class="buttons" *ngIf="authGuardService.isLoggedIn()">
-          <button type="submit" class="btn btn-primary" (click)="onSubmit(inputAnswer)">Submit Answer</button>
+          <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit Answer</button>
         </div>
       </div>
     </div>

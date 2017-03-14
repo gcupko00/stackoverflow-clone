@@ -78,21 +78,20 @@ export class QuestionComponent implements OnInit {
     );
   }
 
-  private onSubmit(inputAnswer: HTMLInputElement) {
-    this.newAnswerText = inputAnswer.value;
-
+  private onSubmit() {
     if (this.newAnswerText.length < 16) {
       this.answerWarn = true;
       return;
     }
 
-    let answer = new Answer(null, this.id, this.newAnswerText, 0, null);
+    let answer = new Answer(null, this.id, this.newAnswerText, 0, this.authGuardService.getUser());
 
     // post answer
     this.answerService.addAnswer(answer).subscribe(
       answer => {
         this.question.answersCount++;
         this.question.answers.push(answer);
+        this.newAnswerText = "";
       },
       error => console.log(error)
     );
