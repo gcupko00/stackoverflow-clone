@@ -20,16 +20,12 @@
       </ul>
       <form class="navbar-form navbar-right" *ngSwitchCase="true" style="width: 35%">
         <div class="input-group" style="width: 100%">
-          <div class="search-results-container" style="background-color: darkcyan">
-            <div class="list-group">
-              <a href="#" class="list-group-item">Cras justo odio</a>
-              <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-              <a href="#" class="list-group-item">Morbi leo risus</a>
-              <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-              <a href="#" class="list-group-item">Vestibulum at eros</a>
+          <div class="search-results-container">
+            <div class="list-group" (click)="resetSearch()">
+              <app-search-preview-result *ngFor="let question of questions" [question]="question"></app-search-preview-result>
             </div>
           </div>
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchTerm" name="searchInput" (keyup)="previewSearch()" autocomplete="off">
           <div class="input-group-btn">
             <button class="btn btn-default" type="submit">
               <span class="glyphicon glyphicon-search"></span>

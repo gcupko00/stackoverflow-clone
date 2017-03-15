@@ -5,7 +5,6 @@ import { AnswerService } from "../services/answer.service";
 import { AuthGuardService } from "../services/auth-guard.service";
 import { Question } from "../../model/Question";
 import { Answer } from "../../model/Answer";
-import { forEach } from "@angular/router/src/utils/collection";
 
 @Component({
   selector: 'question',
@@ -24,6 +23,7 @@ export class QuestionComponent implements OnInit {
   private showLogIn: boolean = true;
   private showSignUp: boolean = false;
   public isCollapsed: boolean = true;
+  private sub: any;
 
   constructor(
     private authGuardService: AuthGuardService,
@@ -31,12 +31,19 @@ export class QuestionComponent implements OnInit {
     private answerService: AnswerService,
     private route: ActivatedRoute
   ) {
-    this.id = route.snapshot.params['id'];
+    this.id = this.route.snapshot.params['id'];
   }
 
   ngOnInit() {
-    this.getQuestion();
     // this.getAnswers();
+    this.sub = this.route.params.subscribe(
+        params => this.paramsChanged(params['id'])
+    );
+  }
+
+  private paramsChanged(id: String) {
+    this.id = id;
+    this.getQuestion();
   }
 
   rateQuestion(upDown: number) {
