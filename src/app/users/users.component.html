@@ -7,11 +7,19 @@
       <button type="button" class="btn btn-default" title="Sort by voters">voters</button>
     </div>
   </div>
-  <div class="img-thumbnail container col-md-2 col-sm-3 col-xs-6" *ngFor="let user of users">
+  <div class="img-thumbnail container col-md-2 col-sm-3 col-xs-6 profile-box" *ngFor="let user of users">
     <a href="javascript:void(0)">
-      <img class="img-thumbnail center-block img-responsive" alt="user-image" src="../../assets/slacker-meme.jpg"/>
-      <span class="label label-info">{{user.userName}}</span>
-      <span>{{user.userReputation}}</span>
+      <div>
+        <img class="img-thumbnail center-block img-responsive" src="{{user.imageUrl}}" alt="No image found"/>
+      </div>
+      <div class="profile-text">
+        <div>
+          <span>{{user.username}}</span>
+        </div>
+        <div>
+          <span>{{user.reputation}}</span>
+        </div>
+      </div>
     </a>
   </div>
 </div>

@@ -2,16 +2,40 @@
   float: left;
   margin-top: 5px;
   margin-bottom: 5px;
+  margin-left: 15px;
   font-weight: normal;
   color: #242729;
-  font-size: 18px;
+  font-size: 24px;
   line-height: 2.22;
+}
+
+img {
+  width: inherit;
+  height: inherit;
+  object-fit: contain;
+}
+
+.profile-picture {
+  width: 100px;
+  height: 100px;
+}
+
+.profile-box {
+  width: 120px;
+  height: 150px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.profile-text {
+  margin-top: 2px;
 }
 
 #tabs {
   float: right;
   line-height: 3.22;
   margin-top: 5px;
+  margin-right: 15px;
   margin-bottom: 5px;
 }
 

@@ -4,7 +4,7 @@
     <div class="span12">
       <div class="well well-small clearfix">
         <div class="row-fluid">
-          <div class="box">
+          <div class="box profile-picture">
             <img src="{{user.imageUrl}}" alt="No image found" class="img-thumbnail"/>
           </div>
           <div class="box">
@@ -33,10 +33,12 @@
       </div>
 
       <div class="well clearfix">
-        <a *ngIf="!changeProfileImg" (click)="toggleChangeProfileImg()" class="btn btn-lg btn-info"
-           data-toggle="modal" data-target="#profile-img-update-modal">
-          <span class="glyphicon glyphicon-picture"></span>  Update profile picture
-        </a>
+        <div>
+          <a *ngIf="!changeProfileImg && !deleteProfile" (click)="toggleChangeProfileImg()" class="btn btn-lg btn-info"
+             data-toggle="modal" data-target="#profile-img-update-modal">
+            <span class="glyphicon glyphicon-picture"></span>  Update profile picture
+          </a>
+        </div>
 
         <div *ngIf="changeProfileImg">
           <h3><label class="input-label">URL to your new profile picture</label></h3>
@@ -54,6 +56,34 @@
           <a (click)="toggleChangeProfileImg()" class="btn btn-lg btn-danger">
             <span class="glyphicon glyphicon-remove"></span> Cancel
           </a>
+        </div>
+
+        <div class="button-delete">
+          <div *ngIf="!changeProfileImg && !deleteProfile">
+            <a class="btn btn-lg btn-danger" (click)="postDeleteProfile(inputPassword)">
+              <span class="glyphicon glyphicon-warning-sign"></span> Delete profile
+            </a>
+          </div>
+
+          <div *ngIf="deleteProfile">
+            <div class="password-label">
+              <h4><label class="password-label">Please enter password</label></h4>
+              <div class="input-form form-group input-group">
+                <input #inputPassword type="password" class="form-control" placeholder="********"
+                       (focus)="hidePasswordWarn()">
+                <span *ngIf="passwordWarn" class="input-group-addon"
+                      tooltip="Password is too short!" placement="right">
+                <i class="glyphicon glyphicon-alert"></i>
+              </span>
+              </div>
+            </div>
+            <a (click)="postDeleteProfile(inputPassword)" class="button-confirm btn btn-lg btn-success">
+              <span class="glyphicon glyphicon-ok"></span> Confirm
+            </a>
+            <a (click)="toggleDeleteProfile()" class="btn btn-lg btn-danger">
+              <span class="glyphicon glyphicon-remove"></span> Cancel
+            </a>
+          </div>
         </div>
       </div>
     </div>

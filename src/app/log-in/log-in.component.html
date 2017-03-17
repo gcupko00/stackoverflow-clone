@@ -1,12 +1,12 @@
 <div class="container col-md-6 col-sm-9 col-xs-12 form-wrapper">
   <h3>Log in</h3>
 
-  <label class="input-label"> Email</label>
+  <label class="input-label"> Username or Email</label>
   <div class="input-group input-form">
     <input #inputEmail type="email" class="form-control"
            placeholder="johnny@email.org" (focus)="hideEmailWarn()">
     <span *ngIf="emailWarn" class="input-group-addon" placement="right"
-          tooltip="Email is too short or invalid!">
+          tooltip="Username or email is too short or invalid!">
       <i class="glyphicon glyphicon-alert"></i>
     </span>
   </div>

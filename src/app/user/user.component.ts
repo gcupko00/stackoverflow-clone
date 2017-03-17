@@ -1,33 +1,42 @@
 import { Component } from '@angular/core';
 import { AuthGuardService } from '../services/auth-guard.service';
 import { UserService } from '../services/user.service';
+import { LoginService } from '../services/login.service';
 import { User } from "../../model/User";
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  providers: [AuthGuardService, UserService],
+  providers: [AuthGuardService, UserService, LoginService],
   styleUrls: ['./user.component.css']
 })
 
 export class UserComponent {
   private user: User;
-
   private newImgUrl: string = "";
+
   private changeProfileImg: boolean = false;
   private imgUrlWarn: boolean = false;
 
-  constructor(private authGuardService: AuthGuardService, private userService: UserService) {
+  private deleteProfile: boolean = false;
+  private passwordWarn: boolean = false;
+
+
+  constructor(private authGuardService: AuthGuardService, private userService: UserService,
+              private loginService: LoginService) {
     if(authGuardService.canActivate()) {
       this.user = authGuardService.getUser();
-
-      console.log(this.user.username);
     }
   };
 
   private toggleChangeProfileImg() {
     this.changeProfileImg = !this.changeProfileImg;
     this.imgUrlWarn = false;
+  };
+
+  private toggleDeleteProfile() {
+    this.deleteProfile = !this.deleteProfile;
+    this.passwordWarn = false;
   };
 
   private postNewProfileImg(inputImgUrl: HTMLInputElement) {
@@ -39,9 +48,10 @@ export class UserComponent {
     }
 
     this.userService.postImgUrl(this.newImgUrl).subscribe(
-      user => {
-        console.log(user);
-        //auth
+      res => {
+        localStorage.removeItem('user');
+        localStorage.setItem('user', JSON.stringify(res.user));
+        this.user = res.user;
       },
       error => {
         console.log(error);
@@ -53,5 +63,35 @@ export class UserComponent {
 
   private hideImgUrlWarn() {
     this.imgUrlWarn = false;
+  };
+
+  private hidePasswordWarn() {
+    this.passwordWarn = false;
+  };
+
+  private postDeleteProfile(inputPassword: HTMLInputElement) {
+    /* Activate deleteProfile menu */
+    if (!this.deleteProfile) {
+      this.toggleDeleteProfile();
+      return;
+    }
+
+    /* Get info from deleteProfile menu and post it to server */
+    if(inputPassword.value.length < 4) {
+      this.passwordWarn = true;
+      return;
+    }
+
+    this.userService.postDeleteUser().subscribe(
+      res => {
+        if (res.status == 200)
+          this.loginService.logout();
+        else
+          this.passwordWarn = true;
+      },
+      error => {
+        console.log(error);
+      }
+    );
   };
 }

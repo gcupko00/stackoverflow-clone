@@ -21,9 +21,7 @@ export class SignUpComponent {
   private failedSignupWarn: boolean = false;
 
   constructor(
-    private signupService: SignupService,
-    private router: Router)
-  { }
+    private signupService: SignupService, private router: Router) { }
 
   private signup(inputUsername: HTMLInputElement, inputPassword: HTMLInputElement, inputEmail: HTMLInputElement) {
     this.username = inputUsername.value;
@@ -43,8 +41,6 @@ export class SignUpComponent {
       return;
 
     let user = new User(null, this.username, this.email, this.password, "", 0, null, null);
-
-    console.log(user);
 
     this.signupService.postUser(user).subscribe(
       user => {

@@ -1,38 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from "../../model/User";
+import { UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
+  providers: [UserService],
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
   private users: User[] = [];
 
-  constructor() {
-    this.users.push(new User("Ranko, 5, none"));
-    this.users.push(new User("Ranko, 5, none"));
-    this.users.push(new User("Ranko, 5, none"));
-    this.users.push(new User("Ranko, 5, none"));
-    this.users.push(new User("Ranko, 5, none"));
-    this.users.push(new User("Ranko, 5, none"));
-    this.users.push(new User("Ranko, 5, none"));
-    this.users.push(new User("Ranko, 5, none"));
-    this.users.push(new User("Ranko, 5, none"));
-  }
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
+    this.getUsers();
   }
 
-}
-
-class User {
-  public userName: string;
-  public userReputation: number;
-  public userImage: string;
-
-  constructor(name: string = "", reputation: number = 0, image: string = "") {
-    this.userName = name;
-    this.userReputation = reputation;
-    this.userImage = image;
+  private getUsers() {
+    this.userService.getUsers().subscribe(
+      users => this.users = users,
+      error => console.log(error)
+    );
   }
 }

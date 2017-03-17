@@ -10,6 +10,9 @@ import { User } from "../../model/User";
 export class SignupService {
   private signupUrl = 'http://localhost:3000/signup';
 
+  public token: string;
+  public username: string;
+
   constructor(private http: Http) { }
 
   postUser(user: User): Observable<User> {
@@ -22,8 +25,19 @@ export class SignupService {
   }
 
   private extractUserData(res: Response) {
-    let body = res.json();
-    return body;
+    let token = res.json() && res.json().token;
+    console.log(res.json());
+
+    if (token) {
+      this.token = token;
+      this.username = res.json().user.username;
+      // store username and jwt token in local storage to keep user logged in between page refreshes
+      localStorage.setItem('currentUser', JSON.stringify({ username: res.json().user.username, token: token }));
+      localStorage.setItem('user', JSON.stringify(res.json().user));
+      return true;
+    }
+
+    return false;
   }
 
   private handleError(error: Response | any) {
@@ -39,4 +53,3 @@ export class SignupService {
     return Observable.throw(errMsg);
   }
 }
-

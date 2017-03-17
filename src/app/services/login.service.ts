@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from "@angular/http";
 import { Observable } from "rxjs/Observable";
+import { Router } from '@angular/router';
 import 'rxjs/add/observable/throw'
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -12,7 +13,7 @@ export class LoginService {
   public token: string;
   public username: string;
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private router: Router) {
     // set token if saved in local storage
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.token = currentUser && currentUser.token;
@@ -42,13 +43,12 @@ export class LoginService {
       .catch(this.handleError);
   }
 
-  private extractUserData(res: Response) {
+  public extractUserData(res: Response) {
     let token = res.json() && res.json().token;
 
     if (token) {
       this.token = token;
       this.username = res.json().user.username;
-      console.log(res.json().user);
       // store username and jwt token in local storage to keep user logged in between page refreshes
       localStorage.setItem('currentUser', JSON.stringify({ username: res.json().user.username, token: token }));
       localStorage.setItem('user', JSON.stringify(res.json().user));
@@ -64,6 +64,7 @@ export class LoginService {
     this.username = null;
     localStorage.removeItem('currentUser');
     localStorage.removeItem('user');
+    this.router.navigate(['/login']);
   }
 
   private handleError(error: Response | any) {

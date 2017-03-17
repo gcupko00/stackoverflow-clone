@@ -71,3 +71,22 @@ div > .stats-container {
 h3 {
   margin-top: 0;
 }
+
+img {
+  width: inherit;
+  height: inherit;
+  object-fit: contain;
+}
+
+.profile-picture {
+  width: 160px;
+  height: 150px;
+}
+
+.button-delete {
+  margin-top: 1em;
+}
+
+.password-label {
+  margin-top: -1em;
+}
